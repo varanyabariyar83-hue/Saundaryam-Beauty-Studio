@@ -1,0 +1,1817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saundaryam – Luxury Beauty Studio & Salon</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A96E;
+  --gold-light: #E8D5B0;
+  --gold-dark: #9A7A47;
+  --cream: #FAF6F0;
+  --cream2: #F3EDE4;
+  --dark: #1A1410;
+  --dark2: #2E2318;
+  --dark3: #231B12;
+  --blush: #E8C4B0;
+  --rose: #D4A9A0;
+  --text-muted: #8A7560;
+  --border: rgba(201,169,110,0.2);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--dark);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--gold-dark); }
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  padding: 22px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.4s, padding 0.4s;
+}
+nav.scrolled {
+  background: rgba(26,20,16,0.97);
+  backdrop-filter: blur(12px);
+  padding: 16px 56px;
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--gold-light);
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+.nav-logo span { font-style: italic; color: var(--gold); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  font-weight: 300;
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(250,246,240,0.55);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--gold-light); }
+.nav-book {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 9px 22px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.nav-book:hover { background: var(--gold); color: var(--dark); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--dark);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 80px 24px 60px;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 90% 55% at 50% -5%, rgba(201,169,110,0.22) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 10% 90%, rgba(232,196,176,0.09) 0%, transparent 60%),
+    radial-gradient(ellipse 45% 45% at 90% 80%, rgba(201,169,110,0.07) 0%, transparent 60%);
+}
+.hero-line-top {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--gold));
+  opacity: 0.5;
+}
+.hero-line-bottom {
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 120px;
+  background: linear-gradient(to top, transparent, var(--gold));
+  opacity: 0.5;
+}
+/* decorative circles */
+.hero-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(201,169,110,0.08);
+  pointer-events: none;
+}
+.hero-ring-1 { width: 600px; height: 600px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+.hero-ring-2 { width: 900px; height: 900px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+.hero-ring-3 { width: 1200px; height: 1200px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+
+.hero-content {
+  position: relative; z-index: 1;
+  text-align: center;
+  animation: fadeUp 1.2s ease both;
+}
+.hero-eyebrow {
+  font-weight: 200; font-size: 0.68rem;
+  letter-spacing: 0.45em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 32px;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 11vw, 8rem);
+  font-weight: 300; color: var(--cream);
+  line-height: 0.92; letter-spacing: -0.01em;
+}
+.hero-title em { font-style: italic; color: var(--gold-light); }
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  font-weight: 300; font-style: italic;
+  color: var(--blush); opacity: 0.75;
+  margin-top: 20px; letter-spacing: 0.06em;
+}
+.hero-divider {
+  display: flex; align-items: center; gap: 16px;
+  margin: 40px auto; width: 260px;
+}
+.hero-divider-line {
+  flex: 1; height: 1px;
+}
+.hero-divider-line.l { background: linear-gradient(to right, transparent, var(--gold)); }
+.hero-divider-line.r { background: linear-gradient(to left, transparent, var(--gold)); }
+.hero-diamond {
+  width: 8px; height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+.hero-btns {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  margin-top: 12px;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--gold); color: var(--dark);
+  font-family: 'Jost', sans-serif; font-weight: 400;
+  font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+  text-decoration: none; padding: 15px 32px;
+  transition: all 0.35s ease;
+}
+.btn-primary:hover { background: var(--gold-light); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid rgba(201,169,110,0.5); color: var(--gold-light);
+  font-family: 'Jost', sans-serif; font-weight: 300;
+  font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+  text-decoration: none; padding: 15px 32px;
+  transition: all 0.35s ease;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.hero-badge {
+  position: absolute; bottom: 52px; right: 60px;
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 4px;
+  animation: spin 20s linear infinite;
+}
+.hero-badge-inner {
+  position: absolute;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; color: var(--gold);
+  font-weight: 300; text-align: center;
+  line-height: 1;
+  animation: spinReverse 20s linear infinite;
+}
+.hero-badge-inner small {
+  display: block;
+  font-size: 0.5rem; font-family: 'Jost', sans-serif;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes spinReverse { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+
+/* ── TICKER ── */
+.ticker {
+  background: var(--gold);
+  padding: 14px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-inner {
+  display: inline-flex; gap: 0;
+  animation: ticker 30s linear infinite;
+}
+.ticker-item {
+  display: inline-flex; align-items: center; gap: 28px;
+  padding: 0 28px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300; font-size: 0.72rem;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--dark);
+}
+.ticker-dot {
+  width: 4px; height: 4px;
+  background: var(--dark); border-radius: 50%;
+  opacity: 0.4;
+}
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── STATS ── */
+.stats {
+  background: var(--dark3);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.stat-item {
+  padding: 60px 40px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s;
+}
+.stat-item:last-child { border-right: none; }
+.stat-item:hover { background: rgba(201,169,110,0.04); }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem; font-weight: 300;
+  color: var(--gold); line-height: 1;
+}
+.stat-label {
+  font-weight: 200; font-size: 0.65rem;
+  letter-spacing: 0.35em; text-transform: uppercase;
+  color: rgba(250,246,240,0.35);
+  margin-top: 10px;
+}
+.stat-desc {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem; font-style: italic;
+  color: rgba(201,169,110,0.4);
+  margin-top: 6px;
+}
+
+/* ── SECTION COMMON ── */
+.section-tag {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-bottom: 16px;
+}
+.section-tag span {
+  font-weight: 200; font-size: 0.65rem;
+  letter-spacing: 0.45em; text-transform: uppercase;
+  color: var(--gold);
+}
+.section-tag::before, .section-tag::after {
+  content: ''; display: block;
+  width: 30px; height: 1px;
+  background: var(--gold); opacity: 0.5;
+}
+.section-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 300; line-height: 1.1;
+  color: var(--dark);
+}
+.section-heading em { font-style: italic; color: var(--gold-dark); }
+.section-heading-light { color: var(--cream); }
+.section-heading-light em { color: var(--gold-light); }
+.section-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem; font-style: italic;
+  line-height: 1.8; color: var(--text-muted);
+  max-width: 520px;
+}
+
+/* ── ABOUT ── */
+.about {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 85vh;
+}
+.about-left {
+  background: var(--dark2);
+  padding: 110px 72px;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.about-watermark {
+  position: absolute; bottom: -40px; right: -30px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11rem; font-weight: 300;
+  color: rgba(201,169,110,0.05);
+  line-height: 1; pointer-events: none;
+  letter-spacing: -0.02em;
+  user-select: none;
+}
+.about-left .section-tag span { color: var(--gold); }
+.about-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 300;
+  line-height: 1.9; color: rgba(250,246,240,0.6);
+  margin-top: 24px; font-style: italic;
+}
+.founder-block {
+  margin-top: 52px; padding-top: 40px;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; gap: 20px;
+}
+.founder-avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; color: var(--dark); font-weight: 400;
+  flex-shrink: 0; border: 2px solid rgba(201,169,110,0.3);
+}
+.founder-info small {
+  font-weight: 200; font-size: 0.62rem;
+  letter-spacing: 0.38em; text-transform: uppercase;
+  color: var(--gold); display: block; margin-bottom: 5px;
+}
+.founder-info strong {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400; font-size: 1.15rem; color: var(--cream);
+}
+.founder-info p {
+  font-size: 0.78rem; color: rgba(250,246,240,0.35);
+  margin-top: 3px; letter-spacing: 0.05em;
+}
+.about-right {
+  background: var(--cream); padding: 110px 72px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.about-pills {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-top: 36px;
+}
+.about-pill {
+  padding: 9px 20px;
+  border: 1px solid var(--gold-light);
+  font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold-dark); font-weight: 300;
+}
+.about-highlight {
+  margin-top: 40px; padding: 32px;
+  background: var(--dark);
+  position: relative; overflow: hidden;
+}
+.about-highlight::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; background: linear-gradient(to bottom, var(--gold), var(--gold-dark));
+}
+.about-highlight p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-style: italic;
+  color: var(--gold-light); line-height: 1.7;
+}
+.about-highlight cite {
+  display: block; margin-top: 12px;
+  font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--text-muted); font-style: normal;
+}
+
+/* ── SERVICES ── */
+.services {
+  background: var(--cream2);
+  padding: 110px 60px;
+  text-align: center;
+}
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; margin-top: 64px;
+  background: var(--gold-light);
+}
+.service-card {
+  background: var(--cream);
+  padding: 52px 38px;
+  text-align: left; position: relative; overflow: hidden;
+  transition: background 0.45s ease;
+  cursor: default;
+}
+.service-card::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(to right, var(--gold), var(--gold-light));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.5s ease;
+}
+.service-card:hover::after { transform: scaleX(1); }
+.service-card:hover { background: var(--dark); }
+.service-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem; font-weight: 300;
+  color: rgba(201,169,110,0.12);
+  line-height: 1; margin-bottom: 20px;
+  transition: color 0.45s;
+}
+.service-card:hover .service-number { color: rgba(201,169,110,0.08); }
+.service-icon {
+  width: 40px; height: 40px; margin-bottom: 22px;
+  color: var(--gold); transition: color 0.45s;
+}
+.service-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem; font-weight: 400;
+  color: var(--dark); margin-bottom: 14px;
+  transition: color 0.45s;
+}
+.service-card:hover h3 { color: var(--gold-light); }
+.service-card p {
+  font-size: 0.82rem; line-height: 1.75;
+  color: var(--text-muted); transition: color 0.45s;
+}
+.service-card:hover p { color: rgba(250,246,240,0.45); }
+.service-tag {
+  display: inline-block; margin-top: 20px;
+  font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); opacity: 0.7;
+  transition: opacity 0.45s;
+}
+.service-card:hover .service-tag { opacity: 1; }
+
+/* ── PACKAGES ── */
+.packages {
+  background: var(--dark);
+  padding: 110px 60px;
+}
+.packages-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; margin-top: 64px;
+  background: var(--border);
+}
+.pkg-card {
+  background: var(--dark3);
+  padding: 52px 42px;
+  transition: background 0.4s;
+  position: relative; overflow: hidden;
+}
+.pkg-card.featured {
+  background: linear-gradient(160deg, #2a1e0e, #1f1508);
+}
+.pkg-card.featured::before {
+  content: 'Most Popular';
+  position: absolute; top: 0; right: 0;
+  background: var(--gold);
+  color: var(--dark);
+  font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+  padding: 6px 16px; font-weight: 400;
+}
+.pkg-card:hover { background: rgba(201,169,110,0.05); }
+.pkg-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 400;
+  color: var(--cream); margin-bottom: 8px;
+}
+.pkg-name em { font-style: italic; color: var(--gold-light); }
+.pkg-tagline {
+  font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 36px;
+}
+.pkg-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 14px;
+  margin-bottom: 40px;
+}
+.pkg-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 0.85rem; color: rgba(250,246,240,0.55);
+  line-height: 1.5;
+}
+.pkg-list li::before {
+  content: '';
+  width: 5px; height: 5px;
+  background: var(--gold); border-radius: 50%;
+  flex-shrink: 0; margin-top: 6px;
+}
+.pkg-cta {
+  display: inline-block;
+  border: 1px solid var(--border);
+  color: var(--gold-light);
+  font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase;
+  padding: 13px 28px; text-decoration: none;
+  transition: all 0.35s;
+}
+.pkg-cta:hover, .pkg-card.featured .pkg-cta {
+  background: var(--gold); color: var(--dark);
+  border-color: var(--gold);
+}
+
+/* ── WHY US ── */
+.why {
+  background: var(--cream);
+  padding: 110px 60px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.why-left {}
+.why-list {
+  margin-top: 48px;
+  display: flex; flex-direction: column; gap: 0;
+}
+.why-item {
+  display: flex; gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(201,169,110,0.15);
+  transition: background 0.3s;
+}
+.why-item:first-child { border-top: 1px solid rgba(201,169,110,0.15); }
+.why-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 300;
+  color: rgba(201,169,110,0.25);
+  line-height: 1; flex-shrink: 0;
+  width: 40px;
+}
+.why-content h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem; font-weight: 400;
+  color: var(--dark); margin-bottom: 8px;
+}
+.why-content p {
+  font-size: 0.82rem; line-height: 1.7;
+  color: var(--text-muted);
+}
+.why-right {
+  position: relative;
+}
+.why-visual {
+  background: var(--dark2);
+  padding: 60px 50px;
+  position: relative; overflow: hidden;
+}
+.why-visual-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 20%, rgba(201,169,110,0.12), transparent 60%);
+}
+.why-visual-quote {
+  position: relative; z-index: 1;
+}
+.why-visual-quote p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem; font-weight: 300;
+  font-style: italic; color: var(--cream);
+  line-height: 1.5;
+}
+.why-visual-quote cite {
+  display: block; margin-top: 24px;
+  font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold); font-style: normal;
+}
+.why-stats {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; margin-top: 1px;
+  background: var(--border);
+}
+.why-stat {
+  background: var(--dark3);
+  padding: 30px;
+  text-align: center;
+}
+.why-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 300; color: var(--gold);
+}
+.why-stat-label {
+  font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: rgba(250,246,240,0.3); margin-top: 6px;
+}
+
+/* ── GALLERY / PORTFOLIO ── */
+.gallery {
+  background: var(--dark3);
+  padding: 110px 60px;
+  text-align: center;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 2px; margin-top: 60px;
+}
+.gallery-item {
+  position: relative; overflow: hidden;
+  background: var(--dark2);
+  aspect-ratio: 1;
+}
+.gallery-item:nth-child(1) {
+  grid-column: 1 / 3; grid-row: 1; aspect-ratio: auto; min-height: 300px;
+}
+.gallery-item:nth-child(5) {
+  grid-column: 3 / 5; grid-row: 2; aspect-ratio: auto; min-height: 300px;
+}
+.gallery-bg {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4rem; opacity: 0.08;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--gold);
+  transition: opacity 0.4s;
+}
+.gallery-item:hover .gallery-bg { opacity: 0.15; }
+.gallery-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(26,20,16,0.85), transparent);
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  opacity: 0; transition: opacity 0.4s;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; color: var(--cream); font-weight: 400;
+}
+.gallery-overlay p {
+  font-size: 0.72rem; color: var(--gold);
+  letter-spacing: 0.2em; text-transform: uppercase; margin-top: 4px;
+}
+/* color fills for gallery items */
+.gallery-item:nth-child(1) { background: linear-gradient(135deg, #2a1a10, #3d2510); }
+.gallery-item:nth-child(2) { background: linear-gradient(135deg, #1f1812, #2e2218); }
+.gallery-item:nth-child(3) { background: linear-gradient(135deg, #231510, #3a1e14); }
+.gallery-item:nth-child(4) { background: linear-gradient(135deg, #1a1814, #28231a); }
+.gallery-item:nth-child(5) { background: linear-gradient(135deg, #1e1612, #2c1e15); }
+.gallery-item:nth-child(6) { background: linear-gradient(135deg, #221a10, #352610); }
+
+/* ── REVIEWS ── */
+.reviews {
+  background: var(--cream2);
+  padding: 110px 60px;
+}
+.reviews-header {
+  display: flex; align-items: flex-end;
+  justify-content: space-between; flex-wrap: wrap; gap: 24px;
+  margin-bottom: 64px;
+}
+.reviews-rating {
+  display: flex; align-items: center; gap: 20px;
+}
+.rating-big {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem; font-weight: 300;
+  color: var(--dark); line-height: 1;
+}
+.rating-details {}
+.stars {
+  display: flex; gap: 4px; margin-bottom: 6px;
+}
+.star { color: var(--gold); font-size: 1rem; }
+.rating-count {
+  font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+.reviews-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; background: var(--gold-light);
+}
+.review-card {
+  background: var(--cream);
+  padding: 44px 38px;
+  position: relative; overflow: hidden;
+  transition: background 0.4s;
+}
+.review-card:hover { background: var(--dark); }
+.review-quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 6rem; font-weight: 300;
+  color: rgba(201,169,110,0.12);
+  line-height: 0.6; margin-bottom: 24px;
+  transition: color 0.4s;
+}
+.review-card:hover .review-quote-mark { color: rgba(201,169,110,0.08); }
+.review-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem; font-style: italic;
+  line-height: 1.8; color: var(--dark);
+  margin-bottom: 28px; transition: color 0.4s;
+}
+.review-card:hover .review-text { color: rgba(250,246,240,0.7); }
+.review-stars { display: flex; gap: 4px; margin-bottom: 20px; }
+.review-stars span { color: var(--gold); font-size: 0.9rem; }
+.reviewer {
+  display: flex; align-items: center; gap: 14px;
+  padding-top: 20px; border-top: 1px solid rgba(201,169,110,0.15);
+  transition: border-color 0.4s;
+}
+.review-card:hover .reviewer { border-color: rgba(201,169,110,0.1); }
+.reviewer-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 400; flex-shrink: 0;
+}
+.reviewer-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 400; color: var(--dark);
+  transition: color 0.4s;
+}
+.review-card:hover .reviewer-name { color: var(--gold-light); }
+.reviewer-detail {
+  font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--text-muted); margin-top: 2px; transition: color 0.4s;
+}
+.review-card:hover .reviewer-detail { color: rgba(250,246,240,0.3); }
+.review-verified {
+  margin-left: auto; flex-shrink: 0;
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); opacity: 0.7;
+}
+/* avatar colors */
+.av-1 { background: linear-gradient(135deg, #b5835a, #c9a96e); color: #fff; }
+.av-2 { background: linear-gradient(135deg, #8a6a8a, #b48ab4); color: #fff; }
+.av-3 { background: linear-gradient(135deg, #5a7a8a, #7aa0b4); color: #fff; }
+.av-4 { background: linear-gradient(135deg, #8a7a5a, #b4a07a); color: #fff; }
+.av-5 { background: linear-gradient(135deg, #7a5a6a, #a47a8a); color: #fff; }
+.av-6 { background: linear-gradient(135deg, #5a6a5a, #7a8a6a); color: #fff; }
+.reviews-note {
+  text-align: center; margin-top: 48px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem; font-style: italic;
+  color: var(--text-muted);
+}
+
+/* ── PROCESS ── */
+.process {
+  background: var(--dark);
+  padding: 110px 60px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.process-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0; margin-top: 64px;
+  position: relative;
+}
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 36px; left: calc(12.5%);
+  right: calc(12.5%);
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border) 20%, var(--border) 80%, transparent);
+}
+.process-step {
+  padding: 0 32px;
+  text-align: center;
+}
+.step-circle {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 28px;
+  background: var(--dark3);
+  position: relative; z-index: 1;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 300; color: var(--gold);
+  transition: border-color 0.4s, background 0.4s;
+}
+.process-step:hover .step-circle {
+  border-color: var(--gold);
+  background: rgba(201,169,110,0.08);
+}
+.step-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem; font-weight: 400;
+  color: var(--cream); margin-bottom: 12px;
+}
+.step-desc {
+  font-size: 0.8rem; line-height: 1.7;
+  color: rgba(250,246,240,0.35);
+}
+
+/* ── VISIT / INFO ── */
+.info {
+  display: grid; grid-template-columns: 1fr 1fr;
+  position: relative; z-index: 1;
+}
+.info-map {
+  background: linear-gradient(135deg, #1a1208, #2a1c0e, #1f1510);
+  min-height: 560px;
+  position: relative;
+  overflow: hidden;
+}
+.info-map-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 50%, rgba(26,20,16,0.6));
+  pointer-events: none; z-index: 1;
+}
+.info-details {
+  background: var(--dark2);
+  padding: 90px 72px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.info-details .section-tag span { color: var(--gold); }
+.info-items {
+  margin-top: 48px;
+  display: flex; flex-direction: column; gap: 30px;
+}
+.info-item {
+  display: flex; gap: 20px; align-items: flex-start;
+}
+.info-icon {
+  width: 38px; height: 38px;
+  background: rgba(201,169,110,0.08);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: var(--gold); margin-top: 2px;
+  transition: background 0.3s;
+}
+.info-item:hover .info-icon { background: rgba(201,169,110,0.15); }
+.info-item-text small {
+  font-weight: 200; font-size: 0.6rem;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--gold); display: block; margin-bottom: 6px;
+}
+.info-item-text span, .info-item-text a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem; font-weight: 300;
+  color: rgba(250,246,240,0.75); line-height: 1.65;
+  text-decoration: none; display: block;
+  transition: color 0.3s;
+}
+.info-item-text a:hover { color: var(--gold-light); }
+.info-cta-row {
+  display: flex; gap: 14px; margin-top: 48px; flex-wrap: wrap;
+}
+.info-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 26px; border: 1px solid var(--border);
+  font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+  text-decoration: none; transition: all 0.35s;
+  font-family: 'Jost', sans-serif; font-weight: 300;
+}
+.info-cta-call { color: var(--gold); border-color: rgba(201,169,110,0.3); }
+.info-cta-call:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); }
+.info-cta-wa { color: #25D366; border-color: rgba(37,211,102,0.25); }
+.info-cta-wa:hover { background: #25D366; color: #fff; border-color: #25D366; }
+
+/* ── PROMISE / BANNER ── */
+.promise {
+  background: var(--gold);
+  padding: 80px 60px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.promise::before {
+  content: '✦';
+  position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+  font-size: 8rem; color: rgba(26,20,16,0.05);
+  pointer-events: none; z-index: 0;
+}
+.promise h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300; color: var(--dark);
+  line-height: 1.2; position: relative; z-index: 1;
+}
+.promise h2 em { font-style: italic; }
+.promise p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-style: italic;
+  color: rgba(26,20,16,0.6); margin-top: 16px;
+  position: relative; z-index: 1;
+}
+.promise .btn-dark {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--dark); color: var(--gold-light);
+  font-family: 'Jost', sans-serif; font-weight: 300;
+  font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+  text-decoration: none; padding: 15px 36px; margin-top: 36px;
+  transition: all 0.35s; position: relative; z-index: 1;
+}
+.promise .btn-dark:hover { background: var(--dark2); }
+
+/* ── FAQ ── */
+.faq {
+  background: var(--cream);
+  padding: 110px 60px;
+  display: grid; grid-template-columns: 1fr 2fr; gap: 80px;
+}
+.faq-left {}
+.faq-items {
+  display: flex; flex-direction: column; gap: 0;
+}
+.faq-item {
+  border-bottom: 1px solid rgba(201,169,110,0.15);
+  overflow: hidden;
+}
+.faq-q {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 0; cursor: pointer;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 400; color: var(--dark);
+  gap: 16px; user-select: none;
+}
+.faq-q:hover { color: var(--gold-dark); }
+.faq-icon {
+  width: 24px; height: 24px; flex-shrink: 0;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; color: var(--gold);
+  transition: transform 0.3s;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s;
+  font-size: 0.85rem; line-height: 1.8;
+  color: var(--text-muted); padding: 0;
+}
+.faq-item.open .faq-a {
+  max-height: 200px; padding-bottom: 20px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px; padding: 80px 60px 60px;
+}
+.footer-brand h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; font-weight: 300; color: var(--gold-light);
+}
+.footer-brand p {
+  font-size: 0.82rem; line-height: 1.8;
+  color: rgba(250,246,240,0.3); margin-top: 16px;
+  max-width: 280px;
+}
+.footer-col h4 {
+  font-weight: 200; font-size: 0.65rem;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul li {
+  font-size: 0.82rem; color: rgba(250,246,240,0.35);
+  cursor: default; transition: color 0.3s;
+}
+.footer-col ul li:hover { color: rgba(250,246,240,0.6); }
+.footer-col ul a {
+  font-size: 0.82rem; color: rgba(250,246,240,0.35);
+  text-decoration: none; transition: color 0.3s;
+}
+.footer-col ul a:hover { color: var(--gold-light); }
+.footer-bottom {
+  padding: 24px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid rgba(201,169,110,0.08);
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-copy {
+  font-size: 0.68rem; letter-spacing: 0.15em;
+  color: rgba(250,246,240,0.18);
+}
+.footer-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 0.9rem;
+  color: rgba(201,169,110,0.35);
+}
+
+/* ── FLOATING PILLS ── */
+.floating-pills {
+  position: fixed; bottom: 32px; right: 28px;
+  display: flex; flex-direction: column; gap: 12px; z-index: 500;
+}
+.pill-btn {
+  display: flex; align-items: center; gap: 10px;
+  padding: 13px 20px; border-radius: 50px;
+  text-decoration: none;
+  font-family: 'Jost', sans-serif; font-weight: 400;
+  font-size: 0.78rem; letter-spacing: 0.08em;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.3);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  white-space: nowrap; overflow: hidden; max-width: 52px;
+}
+.pill-btn:hover { max-width: 200px; transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+.pill-btn svg { flex-shrink: 0; }
+.pill-btn span { opacity: 0; transition: opacity 0.2s ease 0.1s; }
+.pill-btn:hover span { opacity: 1; }
+.pill-call { background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: var(--dark); }
+.pill-wa { background: linear-gradient(135deg, #128C4A, #25D366); color: #fff; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .packages-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-item:nth-child(1), .gallery-item:nth-child(5) { grid-column: auto; }
+  .reviews-grid { grid-template-columns: 1fr 1fr; }
+  .process-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .process-steps::before { display: none; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+@media (max-width: 820px) {
+  nav { padding: 18px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .nav-book { display: none; }
+  .hero-badge { display: none; }
+  .about { grid-template-columns: 1fr; }
+  .about-left, .about-right { padding: 72px 36px; }
+  .services { padding: 72px 24px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .why { grid-template-columns: 1fr; gap: 40px; padding: 72px 36px; }
+  .info { grid-template-columns: 1fr; }
+  .info-map { min-height: 320px; }
+  .info-details { padding: 60px 36px; }
+  .faq { grid-template-columns: 1fr; gap: 40px; padding: 72px 36px; }
+  .gallery { padding: 72px 24px; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
+  .reviews { padding: 72px 24px; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .reviews-header { flex-direction: column; align-items: flex-start; }
+  .process { padding: 72px 36px; }
+  .process-steps { grid-template-columns: 1fr; }
+  .promise { padding: 60px 36px; }
+  .packages { padding: 72px 36px; }
+  footer { padding: 0; }
+  .footer-top { padding: 60px 36px 40px; grid-template-columns: 1fr; }
+  .footer-bottom { padding: 20px 36px; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .floating-pills { bottom: 20px; right: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Saun<span>daryam</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a href="tel:+917982519321" class="nav-book">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ring hero-ring-1"></div>
+  <div class="hero-ring hero-ring-2"></div>
+  <div class="hero-ring hero-ring-3"></div>
+  <div class="hero-line-top"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Greater Noida · Est. by Mamta Sharma · Since 2020</p>
+    <h1 class="hero-title">Saun<em>dar</em>yam</h1>
+    <p class="hero-sub">Luxury Beauty Studio & Salon</p>
+    <div class="hero-divider">
+      <div class="hero-divider-line l"></div>
+      <div class="hero-diamond"></div>
+      <div class="hero-divider-line r"></div>
+    </div>
+    <div class="hero-btns">
+      <a href="tel:+917982519321" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-8-8 19.79 19.79 0 01-3.07-8.68A2 2 0 012 3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 18z"/></svg>
+        Book Appointment
+      </a>
+      <a href="#services" class="btn-outline">Explore Services</a>
+    </div>
+  </div>
+
+  <div class="hero-badge">
+    <svg viewBox="0 0 110 110" style="position:absolute;inset:0;width:100%;height:100%;">
+      <path id="circlePath" d="M55,55 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0" fill="none"/>
+      <text font-family="Jost" font-size="8.5" fill="rgba(201,169,110,0.7)" letter-spacing="3.5" font-weight="200">
+        <textPath href="#circlePath">LUXURY BEAUTY · GREATER NOIDA · OPEN DAILY ·</textPath>
+      </text>
+    </svg>
+    <div class="hero-badge-inner">
+      ✦<small>Premium</small>
+    </div>
+  </div>
+
+  <div class="hero-line-bottom"></div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <div class="ticker-item">Bridal Makeup <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Skin Treatments <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Hair Styling <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Nail Art <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Threading & Waxing <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Party Makeup <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Mehendi <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Open All Days 10 AM – 8 PM <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Bridal Makeup <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Skin Treatments <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Hair Styling <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Nail Art <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Threading & Waxing <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Party Makeup <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Mehendi <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Open All Days 10 AM – 8 PM <span class="ticker-dot"></span></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat-item reveal">
+    <div class="stat-num">500<span style="font-size:2rem">+</span></div>
+    <div class="stat-label">Happy Clients</div>
+    <div class="stat-desc">and counting</div>
+  </div>
+  <div class="stat-item reveal" style="transition-delay:.1s">
+    <div class="stat-num">15<span style="font-size:2rem">+</span></div>
+    <div class="stat-label">Services Offered</div>
+    <div class="stat-desc">curated treatments</div>
+  </div>
+  <div class="stat-item reveal" style="transition-delay:.2s">
+    <div class="stat-num">10–8</div>
+    <div class="stat-label">Open All Days</div>
+    <div class="stat-desc">every day of the week</div>
+  </div>
+  <div class="stat-item reveal" style="transition-delay:.3s">
+    <div class="stat-num">4.9<span style="font-size:2rem">★</span></div>
+    <div class="stat-label">Average Rating</div>
+    <div class="stat-desc">verified reviews</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="about-left">
+    <div class="about-watermark">सौं</div>
+    <div class="section-tag reveal"><span>Our Story</span></div>
+    <h2 class="section-heading section-heading-light reveal">Where Beauty<br><em>Meets Artistry</em></h2>
+    <p class="about-text reveal">
+      Saundaryam is a sanctuary of refined beauty nestled in the heart of Greater Noida's Delta City Centre.
+      Every visit is a transformative experience — a moment of pure indulgence where skilled hands,
+      premium products, and personalised care come together to reveal your most radiant self.
+    </p>
+    <div class="founder-block reveal">
+      <div class="founder-avatar">M</div>
+      <div class="founder-info">
+        <small>Founder & Director</small>
+        <strong>Mamta Sharma</strong>
+        <p>Beauty Artist · Bridal Specialist</p>
+      </div>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="section-tag reveal"><span>Our Philosophy</span></div>
+    <h2 class="section-heading reveal"><em>Crafted</em> for Every Woman</h2>
+    <p class="section-sub reveal" style="margin-top:24px">
+      "Saundaryam" — the Sanskrit word for absolute beauty — is more than a name. It is a promise.
+      We don't just style; we celebrate the innate elegance within every individual.
+    </p>
+    <div class="about-pills reveal">
+      <span class="about-pill">Bridal Expert</span>
+      <span class="about-pill">Skin Care</span>
+      <span class="about-pill">Hair Studio</span>
+      <span class="about-pill">Nail Art</span>
+      <span class="about-pill">Premium Products</span>
+      <span class="about-pill">Personalised Care</span>
+    </div>
+    <div class="about-highlight reveal">
+      <p>"Every woman deserves to feel like a queen — not just on her wedding day, but every single day she walks through our doors."</p>
+      <cite>— Mamta Sharma, Founder</cite>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="section-tag reveal" style="justify-content:center"><span>What We Offer</span></div>
+  <h2 class="section-heading reveal">Our <em>Signature</em> Services</h2>
+  <p style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:var(--text-muted); max-width:520px; margin:16px auto 0;" class="reveal">
+    From bridal transformations to everyday glow — every service is delivered with passion and precision.
+  </p>
+
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-number">01</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="24" cy="18" r="10"/><path d="M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18"/><path d="M20 14c1.2-2 4-3.5 6 0"/></svg>
+      <h3>Bridal Makeup</h3>
+      <p>Bespoke bridal looks crafted to perfection — from subtle elegance to opulent grandeur. HD, Airbrush & traditional options available.</p>
+      <span class="service-tag">Signature Service</span>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.08s">
+      <div class="service-number">02</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M24 6c-4 6-12 8-12 18a12 12 0 0024 0C36 14 28 12 24 6z"/><path d="M18 28c0 3.314 2.686 6 6 6s6-2.686 6-6"/></svg>
+      <h3>Skin Treatments</h3>
+      <p>Advanced facials, clean-ups, de-tans, bleach, glow therapies and D-Tan packs using premium dermatologist-approved products.</p>
+      <span class="service-tag">Most Popular</span>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.16s">
+      <div class="service-number">03</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M16 8c4-2 12-2 16 0"/><path d="M12 16c2-6 20-6 24 0"/><path d="M10 26c0-10 28-10 28 0s-14 12-14 12S10 36 10 26z"/></svg>
+      <h3>Hair Styling & Colour</h3>
+      <p>Cuts, global colours, highlights, balayage, keratin treatments, smoothening, and creative styling from seasoned hair artists.</p>
+      <span class="service-tag">Premium</span>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.08s">
+      <div class="service-number">04</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="10" y="14" width="28" height="24" rx="2"/><path d="M16 14v-4a8 8 0 0116 0v4"/><path d="M20 26l3 3 6-6"/></svg>
+      <h3>Manicure & Pedicure</h3>
+      <p>Luxurious nail care, gel extensions, nail art and spa pedicures that leave your hands and feet impeccably groomed.</p>
+      <span class="service-tag">Trending</span>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.16s">
+      <div class="service-number">05</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M24 10c-8 0-14 6-14 14 0 5 2.5 9 6.5 11.5"/><path d="M24 10c8 0 14 6 14 14 0 5-2.5 9-6.5 11.5"/><path d="M20 34c0 2.2 1.8 4 4 4s4-1.8 4-4"/><path d="M24 38v4"/></svg>
+      <h3>Threading & Waxing</h3>
+      <p>Precise eyebrow shaping, upper lip threading and full-body waxing with premium Rica & chocolate wax for smooth results.</p>
+      <span class="service-tag">Quick Service</span>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.24s">
+      <div class="service-number">06</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M8 24l16-16 16 16"/><path d="M14 18v22h20V18"/><path d="M20 40V28h8v12"/></svg>
+      <h3>Party & Occasion Makeup</h3>
+      <p>Bold, flawless glam for every celebration — cocktail parties, festivals, engagements, sangeet nights and beyond.</p>
+      <span class="service-tag">On Demand</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-number">07</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M24 8L18 20H8l8 8-4 12 12-7 12 7-4-12 8-8H30z"/></svg>
+      <h3>Mehendi</h3>
+      <p>Traditional and contemporary bridal Mehendi designs applied by skilled artists — for bridal, festive and casual occasions.</p>
+      <span class="service-tag">Bridal Special</span>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.08s">
+      <div class="service-number">08</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="24" cy="20" r="10"/><path d="M14 36c2-4 5-7 10-7s8 3 10 7"/><path d="M4 44c2-6 8-11 20-11s18 5 20 11"/></svg>
+      <h3>Pre-Bridal Packages</h3>
+      <p>Customised multi-session packages for brides-to-be including skin prep, hair care, body polishing and full glow-up treatments.</p>
+      <span class="service-tag">Best Value</span>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.16s">
+      <div class="service-number">09</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 38c0-8 4-14 12-14s12 6 12 14"/><circle cx="24" cy="16" r="8"/><path d="M16 20a6 6 0 006-6"/></svg>
+      <h3>Hair Spa & Treatments</h3>
+      <p>Nourishing hair spa, protein treatments, scalp therapies and hair masks using professional salon-grade products for lustrous locks.</p>
+      <span class="service-tag">Relaxing</span>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages" class="packages">
+  <div class="section-tag reveal"><span>Special Packages</span></div>
+  <h2 class="section-heading section-heading-light reveal">Curated <em>Beauty</em> Packages</h2>
+  <p style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:rgba(250,246,240,0.35); max-width:480px; margin-top:16px;" class="reveal">
+    Tailored bundles designed to give you the complete experience at exceptional value.
+  </p>
+  <div class="packages-grid">
+    <div class="pkg-card reveal">
+      <div class="pkg-name">Glow <em>Essentials</em></div>
+      <div class="pkg-tagline">Perfect for a fresh day look</div>
+      <ul class="pkg-list">
+        <li>Cleansing Facial + Glow Pack</li>
+        <li>Threading (Eyebrows + Upper Lip)</li>
+        <li>Basic Manicure</li>
+        <li>Blow Dry & Hair Setting</li>
+        <li>Everyday Makeup</li>
+      </ul>
+      <a href="tel:+917982519321" class="pkg-cta">Enquire Now</a>
+    </div>
+    <div class="pkg-card featured reveal" style="transition-delay:.1s">
+      <div class="pkg-name">Bridal <em>Radiance</em></div>
+      <div class="pkg-tagline">Complete bridal transformation</div>
+      <ul class="pkg-list">
+        <li>Pre-bridal Skin Prep (3 sessions)</li>
+        <li>HD / Airbrush Bridal Makeup</li>
+        <li>Bridal Hair Styling & Setting</li>
+        <li>Full Body Waxing & D-Tan</li>
+        <li>Bridal Manicure & Pedicure</li>
+        <li>Mehendi Design</li>
+        <li>Draping Assistance</li>
+      </ul>
+      <a href="tel:+917982519321" class="pkg-cta">Book Bridal Package</a>
+    </div>
+    <div class="pkg-card reveal" style="transition-delay:.2s">
+      <div class="pkg-name">Party <em>Glam</em></div>
+      <div class="pkg-tagline">Turn heads at every event</div>
+      <ul class="pkg-list">
+        <li>Party / Occasion Makeup</li>
+        <li>Hair Styling (Open / Updo)</li>
+        <li>Nail Polish Application</li>
+        <li>Threading & Clean-up</li>
+        <li>Draping / Outfit Help</li>
+      </ul>
+      <a href="tel:+917982519321" class="pkg-cta">Enquire Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why">
+  <div class="why-left">
+    <div class="section-tag reveal"><span>Why Choose Us</span></div>
+    <h2 class="section-heading reveal">The <em>Saundaryam</em><br>Difference</h2>
+    <div class="why-list">
+      <div class="why-item reveal">
+        <div class="why-num">01</div>
+        <div class="why-content">
+          <h4>Expert & Experienced Artists</h4>
+          <p>Led by founder Mamta Sharma, our team brings years of expertise in bridal artistry, skin care, and hair styling for all skin tones and hair types.</p>
+        </div>
+      </div>
+      <div class="why-item reveal" style="transition-delay:.1s">
+        <div class="why-num">02</div>
+        <div class="why-content">
+          <h4>Premium Products Only</h4>
+          <p>We use trusted, professional-grade brands — MAC, Kérastase, Rica, Schwarzkopf and more — ensuring quality and safety in every treatment.</p>
+        </div>
+      </div>
+      <div class="why-item reveal" style="transition-delay:.2s">
+        <div class="why-num">03</div>
+        <div class="why-content">
+          <h4>Hygienic & Welcoming Space</h4>
+          <p>Our studio maintains the highest hygiene standards with single-use tools, sanitised stations, and a clean, comfortable environment.</p>
+        </div>
+      </div>
+      <div class="why-item reveal" style="transition-delay:.3s">
+        <div class="why-num">04</div>
+        <div class="why-content">
+          <h4>Personalised for Every Client</h4>
+          <p>We take time to understand your preferences, skin type, and look goals before every appointment — no two clients are treated the same.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="why-right reveal">
+    <div class="why-visual">
+      <div class="why-visual-bg"></div>
+      <div class="why-visual-quote">
+        <p>"Beauty is not about looking like someone else — it's about the most radiant version of you."</p>
+        <cite>— Mamta Sharma · Founder, Saundaryam</cite>
+      </div>
+    </div>
+    <div class="why-stats">
+      <div class="why-stat">
+        <div class="why-stat-num">500+</div>
+        <div class="why-stat-label">Brides Styled</div>
+      </div>
+      <div class="why-stat">
+        <div class="why-stat-num">4.9★</div>
+        <div class="why-stat-label">Google Rating</div>
+      </div>
+      <div class="why-stat">
+        <div class="why-stat-num">15+</div>
+        <div class="why-stat-label">Services</div>
+      </div>
+      <div class="why-stat">
+        <div class="why-stat-num">7</div>
+        <div class="why-stat-label">Days a Week</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="section-tag reveal" style="justify-content:center"><span>Our Work</span></div>
+  <h2 class="section-heading section-heading-light reveal">A Glimpse of <em>Transformations</em></h2>
+  <div class="gallery-grid">
+    <div class="gallery-item reveal">
+      <div class="gallery-bg">✦</div>
+      <div class="gallery-overlay"><h4>Bridal Lehenga Look</h4><p>Bridal Makeup</p></div>
+    </div>
+    <div class="gallery-item reveal" style="transition-delay:.08s">
+      <div class="gallery-bg">◈</div>
+      <div class="gallery-overlay"><h4>Glass Skin Facial</h4><p>Skin Treatment</p></div>
+    </div>
+    <div class="gallery-item reveal" style="transition-delay:.16s">
+      <div class="gallery-bg">❋</div>
+      <div class="gallery-overlay"><h4>Balayage Colour</h4><p>Hair Styling</p></div>
+    </div>
+    <div class="gallery-item reveal" style="transition-delay:.24s">
+      <div class="gallery-bg">✿</div>
+      <div class="gallery-overlay"><h4>Nail Art Design</h4><p>Manicure & Nails</p></div>
+    </div>
+    <div class="gallery-item reveal" style="transition-delay:.32s">
+      <div class="gallery-bg">⟡</div>
+      <div class="gallery-overlay"><h4>Festival Glam</h4><p>Party Makeup</p></div>
+    </div>
+    <div class="gallery-item reveal" style="transition-delay:.4s">
+      <div class="gallery-bg">✧</div>
+      <div class="gallery-overlay"><h4>Bridal Mehendi</h4><p>Mehendi Design</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="reviews">
+  <div class="reviews-header">
+    <div>
+      <div class="section-tag reveal"><span>Client Reviews</span></div>
+      <h2 class="section-heading reveal">What Our <em>Clients</em> Say</h2>
+    </div>
+    <div class="reviews-rating reveal">
+      <div class="rating-big">4.9</div>
+      <div class="rating-details">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <div class="rating-count">Based on 120+ reviews</div>
+        <div style="font-size:0.72rem; color:var(--text-muted); margin-top:4px; font-family:'Cormorant Garamond',serif; font-style:italic;">Verified Google Reviews</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reviews-grid">
+
+    <div class="review-card reveal">
+      <div class="review-quote-mark">"</div>
+      <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="review-text">Mamta ji did my bridal makeup and I was absolutely stunned. She understood exactly what I wanted — a dewy, natural bridal look. My skin glowed throughout the day and the makeup lasted through all the functions. Highly recommend Saundaryam to every bride!</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar av-1">P</div>
+        <div>
+          <div class="reviewer-name">Priya Agarwal</div>
+          <div class="reviewer-detail">Bridal Client · Greater Noida</div>
+        </div>
+        <span class="review-verified">✓ Verified</span>
+      </div>
+    </div>
+
+    <div class="review-card reveal" style="transition-delay:.1s">
+      <div class="review-quote-mark">"</div>
+      <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="review-text">I've been getting my facials done here for over a year now. The D-Tan and glow facial has genuinely transformed my skin. The staff is warm, the studio is clean and the results speak for themselves. No better salon in Greater Noida!</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar av-2">S</div>
+        <div>
+          <div class="reviewer-name">Sneha Verma</div>
+          <div class="reviewer-detail">Regular Client · Delta City Centre</div>
+        </div>
+        <span class="review-verified">✓ Verified</span>
+      </div>
+    </div>
+
+    <div class="review-card reveal" style="transition-delay:.2s">
+      <div class="review-quote-mark">"</div>
+      <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="review-text">Came for a keratin treatment and was amazed by the results. My hair has never felt so smooth and manageable. The service was professional, the products were great quality, and Mamta personally oversaw the treatment. 10/10 experience.</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar av-3">A</div>
+        <div>
+          <div class="reviewer-name">Ananya Singh</div>
+          <div class="reviewer-detail">Hair Treatment · Noida</div>
+        </div>
+        <span class="review-verified">✓ Verified</span>
+      </div>
+    </div>
+
+    <div class="review-card reveal">
+      <div class="review-quote-mark">"</div>
+      <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="review-text">The pre-bridal package was worth every penny. My skin looked flawless on my wedding day. They are thorough, professional, and genuinely care about the client's comfort. I've recommended Saundaryam to every girl in my family!</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar av-4">R</div>
+        <div>
+          <div class="reviewer-name">Ritu Sharma</div>
+          <div class="reviewer-detail">Pre-Bridal Package · Greater Noida</div>
+        </div>
+        <span class="review-verified">✓ Verified</span>
+      </div>
+    </div>
+
+    <div class="review-card reveal" style="transition-delay:.1s">
+      <div class="review-quote-mark">"</div>
+      <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="review-text">I got my nail art done for Diwali and received so many compliments. The designs were creative, precise and long-lasting. The technician was patient and took her time. I absolutely love Saundaryam — it is my go-to salon now!</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar av-5">N</div>
+        <div>
+          <div class="reviewer-name">Neha Gupta</div>
+          <div class="reviewer-detail">Nail Art Client · Greater Noida</div>
+        </div>
+        <span class="review-verified">✓ Verified</span>
+      </div>
+    </div>
+
+    <div class="review-card reveal" style="transition-delay:.2s">
+      <div class="review-quote-mark">"</div>
+      <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="review-text">Such a serene and welcoming studio. The ambience is luxurious yet warm. I came for a party makeup and walked out feeling like a star. Mamta ma'am has a magical touch and her team is equally talented. Will keep coming back!</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar av-6">K</div>
+        <div>
+          <div class="reviewer-name">Kavya Mehta</div>
+          <div class="reviewer-detail">Party Makeup · Noida</div>
+        </div>
+        <span class="review-verified">✓ Verified</span>
+      </div>
+    </div>
+
+  </div>
+  <p class="reviews-note reveal">⟡ Reviews collected from Google. Real clients, real experiences. ⟡</p>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div style="text-align:center">
+    <div class="section-tag reveal" style="justify-content:center"><span>How It Works</span></div>
+    <h2 class="section-heading section-heading-light reveal">Your Journey <em>With Us</em></h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="step-circle">01</div>
+      <h3 class="step-title">Book an Appointment</h3>
+      <p class="step-desc">Call or WhatsApp us at 7982519321 to book your preferred date and service. Walk-ins welcome too!</p>
+    </div>
+    <div class="process-step reveal" style="transition-delay:.12s">
+      <div class="step-circle">02</div>
+      <h3 class="step-title">Personalised Consultation</h3>
+      <p class="step-desc">Our experts understand your skin type, preferences and look goals before beginning any treatment.</p>
+    </div>
+    <div class="process-step reveal" style="transition-delay:.24s">
+      <div class="step-circle">03</div>
+      <h3 class="step-title">Luxury Treatment</h3>
+      <p class="step-desc">Sit back and relax as our skilled artists work their magic using premium professional-grade products.</p>
+    </div>
+    <div class="process-step reveal" style="transition-delay:.36s">
+      <div class="step-circle">04</div>
+      <h3 class="step-title">Walk Out Glowing</h3>
+      <p class="step-desc">Leave feeling transformed, confident and beautiful. We're only done when you love what you see.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE BANNER -->
+<div class="promise">
+  <h2>Ready to <em>Glow</em>?<br>Your Beauty Awaits.</h2>
+  <p>Open every day, 10 AM to 8 PM · Delta City Centre, Greater Noida</p>
+  <a href="tel:+917982519321" class="btn-dark">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-8-8 19.79 19.79 0 01-3.07-8.68A2 2 0 012 3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 18z"/></svg>
+    Call +91 79825 19321
+  </a>
+</div>
+
+<!-- VISIT -->
+<section id="visit" class="info">
+  <div class="info-map">
+    <!-- Decorative map grid lines -->
+    <svg width="100%" height="100%" style="position:absolute;inset:0;opacity:0.12;" preserveAspectRatio="none">
+      <!-- Horizontal lines -->
+      <line x1="0" y1="15%" x2="100%" y2="15%" stroke="#C9A96E" stroke-width="1"/>
+      <line x1="0" y1="30%" x2="100%" y2="30%" stroke="#C9A96E" stroke-width="1"/>
+      <line x1="0" y1="45%" x2="100%" y2="45%" stroke="#C9A96E" stroke-width="0.5"/>
+      <line x1="0" y1="60%" x2="100%" y2="60%" stroke="#C9A96E" stroke-width="1"/>
+      <line x1="0" y1="75%" x2="100%" y2="75%" stroke="#C9A96E" stroke-width="0.5"/>
+      <line x1="0" y1="90%" x2="100%" y2="90%" stroke="#C9A96E" stroke-width="1"/>
+      <!-- Vertical lines -->
+      <line x1="12%" y1="0" x2="12%" y2="100%" stroke="#C9A96E" stroke-width="0.5"/>
+      <line x1="28%" y1="0" x2="28%" y2="100%" stroke="#C9A96E" stroke-width="1"/>
+      <line x1="45%" y1="0" x2="45%" y2="100%" stroke="#C9A96E" stroke-width="0.5"/>
+      <line x1="62%" y1="0" x2="62%" y2="100%" stroke="#C9A96E" stroke-width="1"/>
+      <line x1="78%" y1="0" x2="78%" y2="100%" stroke="#C9A96E" stroke-width="0.5"/>
+      <line x1="92%" y1="0" x2="92%" y2="100%" stroke="#C9A96E" stroke-width="1"/>
+      <!-- Roads -->
+      <rect x="0" y="43%" width="100%" height="4%" fill="#C9A96E" opacity="0.15"/>
+      <rect x="26%" y="0" width="3.5%" height="100%" fill="#C9A96E" opacity="0.15"/>
+      <rect x="60%" y="0" width="3%" height="100%" fill="#C9A96E" opacity="0.1"/>
+      <rect x="0" y="68%" width="100%" height="3%" fill="#C9A96E" opacity="0.1"/>
+      <!-- Block fills -->
+      <rect x="12%" y="15%" width="13%" height="26%" fill="#C9A96E" opacity="0.04"/>
+      <rect x="30%" y="48%" width="28%" height="18%" fill="#C9A96E" opacity="0.06"/>
+      <rect x="64%" y="15%" width="13%" height="50%" fill="#C9A96E" opacity="0.04"/>
+      <rect x="12%" y="72%" width="45%" height="16%" fill="#C9A96E" opacity="0.04"/>
+    </svg>
+    <!-- Pin marker -->
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);text-align:center;z-index:2;">
+      <div style="width:52px;height:52px;background:var(--gold);border-radius:50% 50% 50% 0;transform:rotate(-45deg);margin:0 auto;box-shadow:0 8px 24px rgba(0,0,0,0.4);"></div>
+      <div style="width:10px;height:10px;background:var(--dark);border-radius:50%;margin:-30px auto 0;transform:none;position:relative;z-index:1;"></div>
+      <div style="margin-top:18px;background:rgba(26,20,16,0.85);border:1px solid rgba(201,169,110,0.3);padding:10px 18px;white-space:nowrap;backdrop-filter:blur(8px);">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold-light);font-weight:400;">Saundaryam Studio</div>
+        <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(250,246,240,0.4);margin-top:3px;">Delta City Centre · FF 17</div>
+      </div>
+    </div>
+    <!-- Directions button -->
+    <a href="https://maps.google.com/?q=Delta+City+Centre+Greater+Noida" target="_blank"
+       style="position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:3;
+              display:inline-flex;align-items:center;gap:8px;
+              background:var(--gold);color:var(--dark);
+              font-family:'Jost',sans-serif;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;
+              padding:11px 24px;text-decoration:none;font-weight:400;
+              box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:background 0.3s;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      Get Directions
+    </a>
+    <div class="info-map-overlay"></div>
+  </div>
+  <div class="info-details">
+    <div class="section-tag reveal"><span>Find Us</span></div>
+    <h2 class="section-heading section-heading-light reveal">Visit Our <em>Studio</em></h2>
+    <div class="info-items">
+      <div class="info-item reveal">
+        <div class="info-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <div class="info-item-text">
+          <small>Address</small>
+          <span>Delta1, FF 17, Delta City Centre<br>Greater Noida, Uttar Pradesh 201310</span>
+        </div>
+      </div>
+      <div class="info-item reveal">
+        <div class="info-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="info-item-text">
+          <small>Working Hours</small>
+          <span>Open All Days (Mon–Sun)<br>10:00 AM – 8:00 PM</span>
+        </div>
+      </div>
+      <div class="info-item reveal">
+        <div class="info-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-8-8 19.79 19.79 0 01-3.07-8.68A2 2 0 012 3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 18z"/></svg>
+        </div>
+        <div class="info-item-text">
+          <small>Phone</small>
+          <a href="tel:+917982519321">+91 79825 19321</a>
+        </div>
+      </div>
+      <div class="info-item reveal">
+        <div class="info-icon" style="color:#25D366; border-color:rgba(37,211,102,0.2); background:rgba(37,211,102,0.06);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.514 5.837L.057 23.998l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.661-.492-5.197-1.355l-.372-.221-3.862 1.013 1.033-3.759-.242-.385A9.958 9.958 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        </div>
+        <div class="info-item-text">
+          <small>WhatsApp</small>
+          <a href="https://wa.me/917982519321" target="_blank" style="color:rgba(37,211,102,0.7)">+91 79825 19321</a>
+        </div>
+      </div>
+    </div>
+    <div class="info-cta-row">
+      <a href="tel:+917982519321" class="info-cta info-cta-call">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-8-8 19.79 19.79 0 01-3.07-8.68A2 2 0 012 3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 18z"/></svg>
+        Call Us
+      </a>
+      <a href="https://wa.me/917982519321" target="_blank" class="info-cta info-cta-wa">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.514 5.837L.057 23.998l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.661-.492-5.197-1.355l-.372-.221-3.862 1.013 1.033-3.759-.242-.385A9.958 9.958 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-left">
+    <div class="section-tag reveal"><span>FAQ</span></div>
+    <h2 class="section-heading reveal">Common <em>Questions</em></h2>
+    <p class="section-sub reveal" style="margin-top:20px">Have more questions? Call or WhatsApp us anytime.</p>
+    <a href="https://wa.me/917982519321" target="_blank" class="btn-outline" style="display:inline-flex; margin-top:32px; border-color:var(--border); color:var(--gold-dark)">Ask on WhatsApp</a>
+  </div>
+  <div class="faq-items reveal">
+    <div class="faq-item">
+      <div class="faq-q">Do I need to book an appointment in advance? <span class="faq-icon">+</span></div>
+      <div class="faq-a">While walk-ins are always welcome, we recommend booking an appointment in advance — especially for bridal, pre-bridal and party makeup services — to ensure your preferred time slot is available.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What are your working hours? <span class="faq-icon">+</span></div>
+      <div class="faq-a">We are open all days of the week — Monday through Sunday — from 10:00 AM to 8:00 PM. No day off, so you can visit us any time that's convenient for you.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do you offer home services / at-home bridal makeup? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes! We do offer home visits for bridal and occasion makeup within Greater Noida. Please call or WhatsApp us with your location and date to check availability and charges.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What products do you use? <span class="faq-icon">+</span></div>
+      <div class="faq-a">We use only professional, salon-grade and dermatologist-trusted brands including MAC, Kérastase, Schwarzkopf, L'Oréal Professionnel, Rica, and more. Product safety and quality are our top priorities.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How early should I book my bridal appointment? <span class="faq-icon">+</span></div>
+      <div class="faq-a">We recommend booking bridal and pre-bridal packages at least 2–4 weeks in advance, especially during wedding seasons (Oct–Feb and April–June) as slots fill up quickly.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do you offer trial makeup sessions? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Absolutely! We offer bridal trial sessions where you can preview your makeup look before the wedding day. This helps us understand your preferences and finalize the perfect look for your big day.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h3>Saundaryam</h3>
+      <p>Luxury Beauty Studio & Salon in the heart of Greater Noida. Where every woman discovers her most radiant self.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li>Bridal Makeup</li>
+        <li>Skin Treatments</li>
+        <li>Hair Styling</li>
+        <li>Manicure & Pedicure</li>
+        <li>Threading & Waxing</li>
+        <li>Mehendi</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Studio</h4>
+      <ul>
+        <li>About Us</li>
+        <li>Our Team</li>
+        <li>Packages</li>
+        <li>Gallery</li>
+        <li>Reviews</li>
+        <li>FAQ</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+917982519321">+91 79825 19321</a></li>
+        <li><a href="https://wa.me/917982519321" target="_blank">WhatsApp</a></li>
+        <li style="color:rgba(250,246,240,0.25); font-size:0.78rem; margin-top:4px; line-height:1.6;">Delta1, FF 17<br>Delta City Centre<br>Greater Noida 201310</li>
+        <li style="color:rgba(250,246,240,0.25); font-size:0.78rem; margin-top:8px;">Mon–Sun · 10 AM – 8 PM</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Saundaryam Luxury Beauty Studio & Salon · Greater Noida · All Rights Reserved</span>
+    <span class="footer-tagline">Beauty, Elevated. ✦</span>
+  </div>
+</footer>
+
+<!-- FLOATING PILLS -->
+<div class="floating-pills">
+  <a href="tel:+917982519321" class="pill-btn pill-call" title="Call Us">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-8-8 19.79 19.79 0 01-3.07-8.68A2 2 0 012 3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 18z"/></svg>
+    <span>Call Us</span>
+  </a>
+  <a href="https://wa.me/917982519321" target="_blank" class="pill-btn pill-wa" title="WhatsApp">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.514 5.837L.057 23.998l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.661-.492-5.197-1.355l-.372-.221-3.862 1.013 1.033-3.759-.242-.385A9.958 9.958 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+</div>
+
+<script>
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(r => revealObserver.observe(r));
+
+// Nav scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
