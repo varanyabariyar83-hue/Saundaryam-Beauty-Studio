@@ -601,62 +601,334 @@ nav.scrolled {
   color: rgba(250,246,240,0.3); margin-top: 6px;
 }
 
-/* ── GALLERY / PORTFOLIO ── */
+/* ── GALLERY / PHOTO GRID ── */
 .gallery {
   background: var(--dark3);
-  padding: 110px 60px;
-  text-align: center;
+  padding: 0;
 }
-.gallery-grid {
+.photo-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto auto;
-  gap: 2px; margin-top: 60px;
+  grid-template-rows: 280px 280px;
+  gap: 3px;
 }
-.gallery-item {
+.photo-item {
   position: relative; overflow: hidden;
   background: var(--dark2);
-  aspect-ratio: 1;
+  cursor: pointer;
 }
-.gallery-item:nth-child(1) {
-  grid-column: 1 / 3; grid-row: 1; aspect-ratio: auto; min-height: 300px;
+.photo-item.photo-tall {
+  grid-row: span 2;
 }
-.gallery-item:nth-child(5) {
-  grid-column: 3 / 5; grid-row: 2; aspect-ratio: auto; min-height: 300px;
+.photo-item.photo-wide {
+  grid-column: span 2;
 }
-.gallery-bg {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 4rem; opacity: 0.08;
-  font-family: 'Cormorant Garamond', serif;
-  color: var(--gold);
-  transition: opacity 0.4s;
+.photo-item img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.6s ease, filter 0.6s ease;
+  filter: brightness(0.88) saturate(1.1);
 }
-.gallery-item:hover .gallery-bg { opacity: 0.15; }
-.gallery-overlay {
-  position: absolute; inset: 0;
+.photo-item:hover img {
+  transform: scale(1.06);
+  filter: brightness(1) saturate(1.2);
+}
+.photo-label {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 36px 20px 16px;
   background: linear-gradient(to top, rgba(26,20,16,0.85), transparent);
-  display: flex; flex-direction: column;
-  justify-content: flex-end;
-  padding: 24px;
-  opacity: 0; transition: opacity 0.4s;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
 }
-.gallery-item:hover .gallery-overlay { opacity: 1; }
-.gallery-overlay h4 {
+.photo-item:hover .photo-label { transform: translateY(0); }
+.photo-label span {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem; color: var(--cream); font-weight: 400;
+  font-size: 1rem; font-weight: 400;
+  color: var(--gold-light);
+  letter-spacing: 0.05em;
 }
-.gallery-overlay p {
-  font-size: 0.72rem; color: var(--gold);
-  letter-spacing: 0.2em; text-transform: uppercase; margin-top: 4px;
+
+/* ── PHOTO ART BASE ── */
+.photo-art {
+  position: absolute; inset: 0;
+  overflow: hidden;
 }
-/* color fills for gallery items */
-.gallery-item:nth-child(1) { background: linear-gradient(135deg, #2a1a10, #3d2510); }
-.gallery-item:nth-child(2) { background: linear-gradient(135deg, #1f1812, #2e2218); }
-.gallery-item:nth-child(3) { background: linear-gradient(135deg, #231510, #3a1e14); }
-.gallery-item:nth-child(4) { background: linear-gradient(135deg, #1a1814, #28231a); }
-.gallery-item:nth-child(5) { background: linear-gradient(135deg, #1e1612, #2c1e15); }
-.gallery-item:nth-child(6) { background: linear-gradient(135deg, #221a10, #352610); }
+/* BRIDAL */
+.photo-bridal { background: radial-gradient(ellipse at 50% 30%, #3d1a2e, #1a0810 70%); }
+.photo-bridal .pa-face {
+  position: absolute; left: 50%; top: 18%; transform: translateX(-50%);
+  width: 130px; height: 160px;
+}
+.photo-bridal .pa-skin {
+  position: absolute; inset: 0; border-radius: 50% 50% 45% 45%;
+  background: linear-gradient(160deg, #d4956a, #c07a50);
+  box-shadow: inset -8px -8px 20px rgba(0,0,0,0.3);
+}
+.photo-bridal .pa-eye {
+  position: absolute; top: 38%; width: 26px; height: 12px;
+  background: #1a0810; border-radius: 50%;
+}
+.photo-bridal .pa-eye-l { left: 18%; }
+.photo-bridal .pa-eye-r { right: 18%; }
+.photo-bridal .pa-eye::after {
+  content:''; position:absolute; inset:1px 2px;
+  background: linear-gradient(135deg, #8B1a4a, #6a0f35);
+  border-radius: 50%;
+}
+.photo-bridal .pa-brow {
+  position: absolute; top: 28%; height: 4px; width: 30px;
+  background: #3a1a0a; border-radius: 4px;
+}
+.photo-bridal .pa-brow-l { left: 14%; transform: rotate(-8deg); }
+.photo-bridal .pa-brow-r { right: 14%; transform: rotate(8deg); }
+.photo-bridal .pa-lips {
+  position: absolute; bottom: 22%; left: 50%; transform: translateX(-50%);
+  width: 36px; height: 14px;
+  background: linear-gradient(135deg, #a01840, #c42060);
+  border-radius: 40% 40% 50% 50%;
+}
+.photo-bridal .pa-blush {
+  position: absolute; top: 52%; width: 28px; height: 14px;
+  background: rgba(200,60,80,0.25); border-radius: 50%;
+}
+.photo-bridal .pa-blush-l { left: 8%; }
+.photo-bridal .pa-blush-r { right: 8%; }
+.photo-bridal .pa-maang-tikka {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  width: 8px; height: 8px; background: var(--gold); border-radius: 50%;
+  box-shadow: 0 0 10px var(--gold);
+}
+.photo-bridal .pa-maang-tikka::before {
+  content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 30px; background: var(--gold); opacity: 0.6;
+}
+.photo-bridal .pa-dupatta {
+  position: absolute; top: 0; left: -20px; right: -20px; bottom: -10px;
+  background: linear-gradient(160deg, rgba(180,20,80,0.25), rgba(120,10,50,0.15));
+  border-radius: 0 0 50% 50%;
+}
+.photo-bridal .pa-jewel {
+  position: absolute; top: 50%; width: 10px; height: 40px;
+  background: linear-gradient(to bottom, var(--gold), #8a6030);
+  border-radius: 5px;
+}
+.photo-bridal .pa-jewel-l { left: 22%; }
+.photo-bridal .pa-jewel-r { right: 22%; }
+.photo-bridal .pa-dots {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(201,169,110,0.4) 1px, transparent 1px);
+  background-size: 20px 20px; opacity: 0.3;
+}
+/* NAILS */
+.photo-nails { background: linear-gradient(135deg, #1a1220, #2a1830); }
+.pa-hand {
+  position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 6px; align-items: flex-end;
+}
+.pa-nail {
+  width: 28px; border-radius: 14px 14px 4px 4px;
+  position: relative; overflow: hidden;
+  background: linear-gradient(160deg, #c8a0d0, #9060a8);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+.pa-nail.n1 { height: 64px; }
+.pa-nail.n2 { height: 80px; }
+.pa-nail.n3 { height: 84px; }
+.pa-nail.n4 { height: 76px; }
+.pa-nail.n5 { height: 52px; border-radius: 10px 10px 4px 4px; }
+.pa-nail-design {
+  position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+  width: 14px; height: 14px;
+  background: radial-gradient(circle, rgba(255,255,255,0.5), transparent 70%);
+  border-radius: 50%;
+}
+.pa-flowers {
+  position: absolute; top: 15%; left: 50%; transform: translateX(-50%);
+  font-size: 2rem; opacity: 0.15; letter-spacing: 10px; color: #e0b0f0;
+}
+.pa-flowers::before { content: 'floralart'; font-size:0; }
+/* PARTY GLAM */
+.photo-party { background: radial-gradient(ellipse at 50% 0%, #2a1040, #0a0415 60%); }
+.pa-bg-glow {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(180,60,200,0.3), transparent 70%);
+}
+.pa-face-party {
+  position: absolute; left: 50%; top: 15%; transform: translateX(-50%);
+  width: 120px; height: 150px;
+}
+.pa-skin-party {
+  position: absolute; inset: 0; border-radius: 50% 50% 45% 45%;
+  background: linear-gradient(160deg, #c8806a, #b06048);
+  box-shadow: inset -6px -10px 20px rgba(0,0,0,0.4);
+}
+.pa-eye-party {
+  position: absolute; top: 35%; width: 28px; height: 16px;
+  background: #0a0415; border-radius: 50%;
+  box-shadow: 0 0 8px rgba(180,60,220,0.6);
+}
+.pa-eye-party::after {
+  content:''; position:absolute; inset:2px 3px;
+  background: linear-gradient(135deg, #6020a0, #9040c0);
+  border-radius: 50%;
+}
+.pa-lash {
+  position: absolute; top: 30%; width: 32px; height: 4px;
+  background: #0a0415; border-radius: 2px;
+}
+.pa-lash-l { left: 12%; transform: rotate(-8deg); }
+.pa-lash-r { right: 12%; transform: rotate(8deg); }
+.pa-lips-party {
+  position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%);
+  width: 34px; height: 14px;
+  background: linear-gradient(135deg, #c020a0, #e040c0);
+  border-radius: 40% 40% 50% 50%;
+  box-shadow: 0 0 10px rgba(200,40,160,0.5);
+}
+.pa-highlight {
+  position: absolute; top: 20%; left: 30%; width: 20px; height: 30px;
+  background: rgba(255,255,255,0.08); border-radius: 50%; transform: rotate(-20deg);
+}
+.pa-sparkles {
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
+    radial-gradient(circle, rgba(200,100,255,0.6) 1px, transparent 1px);
+  background-size: 30px 30px, 50px 50px;
+  background-position: 0 0, 15px 15px;
+  opacity: 0.3;
+}
+/* HAIR */
+.photo-hair { background: linear-gradient(135deg, #1a1208, #2a1c0a); }
+.pa-hair-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, #3a2810 0%, #1a1005 50%, #2a1c08 100%);
+}
+.pa-hair-strand {
+  position: absolute; bottom: 0; width: 18%; border-radius: 50% 50% 0 0;
+  transform-origin: bottom center;
+}
+.pa-hair-strand.s1 { left:2%; height:90%; background: linear-gradient(to bottom, #8B4513, #3a1a05); transform:rotate(-8deg); }
+.pa-hair-strand.s2 { left:16%; height:95%; background: linear-gradient(to bottom, #C9A96E, #8a6020); }
+.pa-hair-strand.s3 { left:30%; height:88%; background: linear-gradient(to bottom, #a06030, #4a2010); transform:rotate(3deg); }
+.pa-hair-strand.s4 { left:50%; height:92%; background: linear-gradient(to bottom, #E8C87a, #a07828); transform:rotate(-4deg); }
+.pa-hair-strand.s5 { left:64%; height:86%; background: linear-gradient(to bottom, #6a4010, #2a1205); transform:rotate(6deg); }
+.pa-hair-strand.s6 { left:78%; height:90%; background: linear-gradient(to bottom, #C9A96E, #7a5018); transform:rotate(-3deg); }
+.pa-scissors {
+  position: absolute; top: 20px; right: 20px; opacity: 0.4;
+  font-size: 2rem; color: var(--gold); transform: rotate(45deg);
+}
+.pa-scissors::before { content: '✂'; }
+.pa-hair-label {
+  position: absolute; top: 24px; left: 28px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-style: italic; color: rgba(201,169,110,0.5);
+  letter-spacing: 0.05em;
+}
+/* SKIN */
+.photo-skin { background: radial-gradient(ellipse at 50% 30%, #2a1a10, #100a06); }
+.pa-skin-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(201,169,110,0.15), transparent 60%);
+}
+.pa-face-skin {
+  position: absolute; left: 50%; top: 20%; transform: translateX(-50%);
+  width: 110px; height: 130px;
+}
+.pa-skin-glow {
+  position: absolute; inset: 0; border-radius: 50% 50% 45% 45%;
+  background: linear-gradient(160deg, #d8a882, #c08860);
+  box-shadow: 0 0 30px rgba(201,169,110,0.3), inset -6px -8px 20px rgba(0,0,0,0.2);
+}
+.pa-eye-closed {
+  position: absolute; top: 40%; width: 22px; height: 4px;
+  background: #3a1a0a; border-radius: 2px;
+}
+.pa-eye-closed.pa-eye-l { left: 18%; }
+.pa-eye-closed.pa-eye-r { right: 18%; }
+.pa-lips-skin {
+  position: absolute; bottom: 22%; left: 50%; transform: translateX(-50%);
+  width: 28px; height: 10px;
+  background: linear-gradient(135deg, #c06050, #a04038);
+  border-radius: 40% 40% 50% 50%;
+}
+.pa-glow-dots {
+  position: absolute; top: 15%; left: 60%; width: 12px; height: 12px;
+  background: rgba(255,255,255,0.4); border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255,255,255,0.3);
+}
+.pa-cream-drops {
+  position: absolute; bottom: 8%; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 12px;
+}
+.pa-cream-drops::before, .pa-cream-drops::after {
+  content: ''; display: block;
+  width: 20px; height: 32px; border-radius: 50% 50% 40% 40%;
+  background: linear-gradient(to bottom, rgba(250,246,240,0.6), rgba(201,169,110,0.3));
+}
+/* THREADING */
+.photo-threading { background: linear-gradient(135deg, #1a1410, #2e1e10); }
+.pa-threading-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(201,169,110,0.1), transparent 60%);
+}
+.pa-face-thread {
+  position: absolute; left: 50%; top: 20%; transform: translateX(-50%);
+  width: 120px; height: 140px;
+}
+.pa-skin-thread {
+  position: absolute; inset: 0; border-radius: 50% 50% 45% 45%;
+  background: linear-gradient(160deg, #c8906a, #b07050);
+}
+.pa-brow-arch {
+  position: absolute; top: 30%; height: 5px; width: 34px;
+  background: #2a0a05; border-radius: 4px 4px 0 0;
+}
+.pa-brow-arch.pa-brow-arch-l { left: 12%; transform: rotate(-6deg); }
+.pa-brow-arch.pa-brow-arch-r { right: 12%; transform: rotate(6deg); }
+.pa-eye-thread {
+  position: absolute; top: 42%; width: 24px; height: 10px;
+  background: #1a0808; border-radius: 50%;
+}
+.pa-eye-thread.pa-eye-l { left: 16%; }
+.pa-eye-thread.pa-eye-r { right: 16%; }
+.pa-thread-line {
+  position: absolute; top: 35%; left: 15%; right: 15%; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0.5;
+}
+/* PRE-BRIDAL */
+.photo-prebridal { background: linear-gradient(135deg, #1a1010, #2a1818); }
+.pa-prebridal-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(201,169,110,0.12), transparent 50%),
+    radial-gradient(ellipse at 70% 60%, rgba(180,60,100,0.1), transparent 50%);
+}
+.pa-products {
+  position: absolute; bottom: 25%; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 12px; align-items: flex-end;
+}
+.pa-bottle {
+  border-radius: 6px 6px 4px 4px;
+  position: relative;
+}
+.pa-bottle::before {
+  content: ''; position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
+  width: 8px; height: 10px; border-radius: 3px 3px 0 0;
+  background: inherit; filter: brightness(0.8);
+}
+.pa-bottle.b1 { width: 28px; height: 70px; background: linear-gradient(160deg, #d4a0b0, #a06080); }
+.pa-bottle.b2 { width: 22px; height: 55px; background: linear-gradient(160deg, #c8d4a0, #809060); }
+.pa-bottle.b3 { width: 32px; height: 80px; background: linear-gradient(160deg, #E8D5B0, #C9A96E); }
+.pa-prebridal-text {
+  position: absolute; top: 18%; left: 50%; transform: translateX(-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem; font-style: italic; font-weight: 400;
+  color: rgba(201,169,110,0.6); text-align: center; line-height: 1.5;
+  white-space: nowrap;
+}
 
 /* ── REVIEWS ── */
 .reviews {
@@ -1035,8 +1307,8 @@ footer {
   .stats { grid-template-columns: repeat(2, 1fr); }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .packages-grid { grid-template-columns: 1fr; }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-item:nth-child(1), .gallery-item:nth-child(5) { grid-column: auto; }
+  .photo-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+  .photo-item.photo-tall, .photo-item.photo-wide { grid-column: auto; grid-row: auto; }
   .reviews-grid { grid-template-columns: 1fr 1fr; }
   .process-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
   .process-steps::before { display: none; }
@@ -1098,7 +1370,7 @@ footer {
   <div class="hero-line-top"></div>
 
   <div class="hero-content">
-    <p class="hero-eyebrow">Greater Noida · Est. by Mamta Sharma · Since 2020</p>
+    <p class="hero-eyebrow">Greater Noida · Est. by Mamta Sharma · Newly Opened</p>
     <h1 class="hero-title">Saun<em>dar</em>yam</h1>
     <p class="hero-sub">Luxury Beauty Studio & Salon</p>
     <div class="hero-divider">
@@ -1197,6 +1469,54 @@ footer {
     </div>
   </div>
   <div class="about-right">
+    <!-- Decorative mandala illustration -->
+    <div class="reveal" style="margin-bottom:36px;">
+      <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;">
+        <!-- Background glow -->
+        <ellipse cx="160" cy="100" rx="120" ry="75" fill="none" stroke="rgba(201,169,110,0.08)" stroke-width="40"/>
+        <!-- Outer ring -->
+        <circle cx="160" cy="100" r="85" fill="none" stroke="rgba(201,169,110,0.15)" stroke-width="1" stroke-dasharray="4 6"/>
+        <circle cx="160" cy="100" r="72" fill="none" stroke="rgba(201,169,110,0.1)" stroke-width="0.5"/>
+        <!-- Petals -->
+        <g opacity="0.5">
+          <ellipse cx="160" cy="30" rx="8" ry="20" fill="var(--gold-light)" opacity="0.3"/>
+          <ellipse cx="160" cy="170" rx="8" ry="20" fill="var(--gold-light)" opacity="0.3"/>
+          <ellipse cx="90" cy="100" rx="20" ry="8" fill="var(--gold-light)" opacity="0.3"/>
+          <ellipse cx="230" cy="100" rx="20" ry="8" fill="var(--gold-light)" opacity="0.3"/>
+          <ellipse cx="110" cy="50" rx="8" ry="20" fill="var(--gold-light)" opacity="0.2" transform="rotate(-45 110 50)"/>
+          <ellipse cx="210" cy="50" rx="8" ry="20" fill="var(--gold-light)" opacity="0.2" transform="rotate(45 210 50)"/>
+          <ellipse cx="110" cy="150" rx="8" ry="20" fill="var(--gold-light)" opacity="0.2" transform="rotate(45 110 150)"/>
+          <ellipse cx="210" cy="150" rx="8" ry="20" fill="var(--gold-light)" opacity="0.2" transform="rotate(-45 210 150)"/>
+        </g>
+        <!-- Middle ring -->
+        <circle cx="160" cy="100" r="50" fill="none" stroke="rgba(201,169,110,0.2)" stroke-width="1"/>
+        <!-- Inner petals -->
+        <g opacity="0.6">
+          <ellipse cx="160" cy="58" rx="6" ry="14" fill="var(--gold)" opacity="0.2"/>
+          <ellipse cx="160" cy="142" rx="6" ry="14" fill="var(--gold)" opacity="0.2"/>
+          <ellipse cx="118" cy="100" rx="14" ry="6" fill="var(--gold)" opacity="0.2"/>
+          <ellipse cx="202" cy="100" rx="14" ry="6" fill="var(--gold)" opacity="0.2"/>
+          <ellipse cx="131" cy="69" rx="6" ry="14" fill="var(--gold)" opacity="0.15" transform="rotate(-45 131 69)"/>
+          <ellipse cx="189" cy="69" rx="6" ry="14" fill="var(--gold)" opacity="0.15" transform="rotate(45 189 69)"/>
+          <ellipse cx="131" cy="131" rx="6" ry="14" fill="var(--gold)" opacity="0.15" transform="rotate(45 131 131)"/>
+          <ellipse cx="189" cy="131" rx="6" ry="14" fill="var(--gold)" opacity="0.15" transform="rotate(-45 189 131)"/>
+        </g>
+        <!-- Inner ring -->
+        <circle cx="160" cy="100" r="28" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+        <circle cx="160" cy="100" r="18" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.25)" stroke-width="1"/>
+        <!-- Center -->
+        <circle cx="160" cy="100" r="8" fill="var(--gold)" opacity="0.4"/>
+        <circle cx="160" cy="100" r="4" fill="var(--gold)" opacity="0.7"/>
+        <!-- Corner flourishes -->
+        <path d="M20 20 Q35 20 35 35" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+        <path d="M300 20 Q285 20 285 35" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+        <path d="M20 180 Q35 180 35 165" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+        <path d="M300 180 Q285 180 285 165" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+        <!-- Text -->
+        <text x="160" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="rgba(201,169,110,0.5)" letter-spacing="3">सौंदर्यम्</text>
+        <text x="160" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="rgba(201,169,110,0.35)" letter-spacing="5">BEAUTY</text>
+      </svg>
+    </div>
     <div class="section-tag reveal"><span>Our Philosophy</span></div>
     <h2 class="section-heading reveal"><em>Crafted</em> for Every Woman</h2>
     <p class="section-sub reveal" style="margin-top:24px">
@@ -1293,6 +1613,49 @@ footer {
   </div>
 </section>
 
+<!-- VISUAL DIVIDER: SERVICES STRIP -->
+<div style="background:var(--dark3); padding:0; overflow:hidden; line-height:0;">
+  <svg viewBox="0 0 1400 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;" preserveAspectRatio="none">
+    <!-- Background -->
+    <rect width="1400" height="120" fill="#1A1410"/>
+    <!-- Decorative horizontal band -->
+    <rect y="55" width="1400" height="10" fill="rgba(201,169,110,0.06)"/>
+    <!-- Repeating ornamental pattern -->
+    <g fill="none" stroke="rgba(201,169,110,0.18)" stroke-width="0.8">
+      <!-- Repeat diamond-flower motif every 140px -->
+      <g id="motif">
+        <circle cx="0" cy="60" r="12"/>
+        <circle cx="0" cy="60" r="6"/>
+        <line x1="-20" y1="60" x2="20" y2="60"/>
+        <line x1="0" y1="40" x2="0" y2="80"/>
+        <line x1="-14" y1="46" x2="14" y2="74"/>
+        <line x1="14" y1="46" x2="-14" y2="74"/>
+      </g>
+      <use href="#motif" transform="translate(140,0)"/>
+      <use href="#motif" transform="translate(280,0)"/>
+      <use href="#motif" transform="translate(420,0)"/>
+      <use href="#motif" transform="translate(560,0)"/>
+      <use href="#motif" transform="translate(700,0)"/>
+      <use href="#motif" transform="translate(840,0)"/>
+      <use href="#motif" transform="translate(980,0)"/>
+      <use href="#motif" transform="translate(1120,0)"/>
+      <use href="#motif" transform="translate(1260,0)"/>
+      <use href="#motif" transform="translate(1400,0)"/>
+      <!-- Connecting lines -->
+      <line x1="0" y1="60" x2="1400" y2="60" stroke-width="0.3" opacity="0.4"/>
+      <line x1="0" y1="52" x2="1400" y2="52" stroke-width="0.3" opacity="0.2"/>
+      <line x1="0" y1="68" x2="1400" y2="68" stroke-width="0.3" opacity="0.2"/>
+    </g>
+    <!-- Center jewel -->
+    <g transform="translate(700,60)">
+      <circle r="18" fill="rgba(201,169,110,0.08)" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+      <circle r="8" fill="rgba(201,169,110,0.15)" stroke="rgba(201,169,110,0.4)" stroke-width="0.8"/>
+      <circle r="3" fill="rgba(201,169,110,0.6)"/>
+      <text y="4" text-anchor="middle" font-size="6" fill="rgba(201,169,110,0.5)" font-family="Georgia,serif" letter-spacing="1">✦</text>
+    </g>
+  </svg>
+</div>
+
 <!-- PACKAGES -->
 <section id="packages" class="packages">
   <div class="section-tag reveal"><span>Special Packages</span></div>
@@ -1381,6 +1744,44 @@ footer {
   <div class="why-right reveal">
     <div class="why-visual">
       <div class="why-visual-bg"></div>
+      <!-- SVG Illustration: Beauty tools -->
+      <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin-bottom:24px;opacity:0.75;">
+        <!-- Lipstick -->
+        <g transform="translate(40,20)">
+          <rect x="0" y="40" width="22" height="60" rx="3" fill="#8a2040" opacity="0.8"/>
+          <rect x="2" y="20" width="18" height="24" rx="2" fill="#c03060" opacity="0.9"/>
+          <ellipse cx="11" cy="20" rx="9" ry="5" fill="#d04070" opacity="0.9"/>
+          <rect x="4" y="40" width="4" height="60" rx="1" fill="rgba(255,255,255,0.1)"/>
+        </g>
+        <!-- Brush -->
+        <g transform="translate(90,10)">
+          <rect x="8" y="0" width="6" height="80" rx="3" fill="#C9A96E" opacity="0.7"/>
+          <ellipse cx="11" cy="85" rx="7" ry="18" fill="#E8D5B0" opacity="0.6"/>
+          <ellipse cx="11" cy="82" rx="5" ry="4" fill="#C9A96E" opacity="0.8"/>
+        </g>
+        <!-- Mirror -->
+        <g transform="translate(140,15)">
+          <ellipse cx="30" cy="50" rx="28" ry="35" fill="none" stroke="rgba(201,169,110,0.5)" stroke-width="2"/>
+          <ellipse cx="30" cy="50" rx="22" ry="29" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.2)" stroke-width="1"/>
+          <line x1="30" y1="85" x2="30" y2="110" stroke="rgba(201,169,110,0.4)" stroke-width="2"/>
+          <ellipse cx="30" cy="113" rx="14" ry="4" fill="rgba(201,169,110,0.15)" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+          <!-- Reflection shine -->
+          <ellipse cx="20" cy="38" rx="5" ry="8" fill="rgba(255,255,255,0.06)" transform="rotate(-20 20 38)"/>
+        </g>
+        <!-- Perfume bottle -->
+        <g transform="translate(225,25)">
+          <rect x="0" y="30" width="36" height="55" rx="4" fill="rgba(201,169,110,0.2)" stroke="rgba(201,169,110,0.4)" stroke-width="1"/>
+          <rect x="10" y="15" width="16" height="18" rx="2" fill="rgba(201,169,110,0.15)" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+          <rect x="15" y="8" width="6" height="10" rx="2" fill="rgba(201,169,110,0.4)"/>
+          <ellipse cx="18" cy="8" rx="5" ry="3" fill="rgba(201,169,110,0.5)"/>
+          <rect x="6" y="50" width="24" height="1" fill="rgba(201,169,110,0.2)"/>
+          <text x="18" y="68" text-anchor="middle" font-size="5" fill="rgba(201,169,110,0.5)" font-family="Georgia,serif" letter-spacing="1">LUXURY</text>
+        </g>
+        <!-- Scattered dots -->
+        <circle cx="130" cy="130" r="2" fill="rgba(201,169,110,0.3)"/>
+        <circle cx="80" cy="140" r="1.5" fill="rgba(201,169,110,0.2)"/>
+        <circle cx="200" cy="145" r="2" fill="rgba(201,169,110,0.25)"/>
+      </svg>
       <div class="why-visual-quote">
         <p>"Beauty is not about looking like someone else — it's about the most radiant version of you."</p>
         <cite>— Mamta Sharma · Founder, Saundaryam</cite>
@@ -1409,35 +1810,214 @@ footer {
 
 <!-- GALLERY -->
 <section class="gallery">
-  <div class="section-tag reveal" style="justify-content:center"><span>Our Work</span></div>
-  <h2 class="section-heading section-heading-light reveal">A Glimpse of <em>Transformations</em></h2>
-  <div class="gallery-grid">
-    <div class="gallery-item reveal">
-      <div class="gallery-bg">✦</div>
-      <div class="gallery-overlay"><h4>Bridal Lehenga Look</h4><p>Bridal Makeup</p></div>
+  <div class="photo-grid">
+
+    <!-- Bridal Makeup -->
+    <div class="photo-item photo-tall reveal">
+      <div class="photo-art photo-bridal">
+        <div class="pa-face">
+          <div class="pa-skin"></div>
+          <div class="pa-eye pa-eye-l"></div>
+          <div class="pa-eye pa-eye-r"></div>
+          <div class="pa-brow pa-brow-l"></div>
+          <div class="pa-brow pa-brow-r"></div>
+          <div class="pa-lips"></div>
+          <div class="pa-blush pa-blush-l"></div>
+          <div class="pa-blush pa-blush-r"></div>
+          <div class="pa-maang-tikka"></div>
+        </div>
+        <div class="pa-dupatta"></div>
+        <div class="pa-jewel pa-jewel-l"></div>
+        <div class="pa-jewel pa-jewel-r"></div>
+        <div class="pa-dots"></div>
+      </div>
+      <div class="photo-label"><span>✦ Bridal Makeup</span></div>
     </div>
-    <div class="gallery-item reveal" style="transition-delay:.08s">
-      <div class="gallery-bg">◈</div>
-      <div class="gallery-overlay"><h4>Glass Skin Facial</h4><p>Skin Treatment</p></div>
+
+    <!-- Nail Art -->
+    <div class="photo-item reveal" style="transition-delay:.08s">
+      <div class="photo-art photo-nails">
+        <div class="pa-hand">
+          <div class="pa-nail n1"><div class="pa-nail-design"></div></div>
+          <div class="pa-nail n2"><div class="pa-nail-design"></div></div>
+          <div class="pa-nail n3"><div class="pa-nail-design"></div></div>
+          <div class="pa-nail n4"><div class="pa-nail-design"></div></div>
+          <div class="pa-nail n5"><div class="pa-nail-design"></div></div>
+        </div>
+        <div class="pa-flowers"></div>
+      </div>
+      <div class="photo-label"><span>✦ Nail Art</span></div>
     </div>
-    <div class="gallery-item reveal" style="transition-delay:.16s">
-      <div class="gallery-bg">❋</div>
-      <div class="gallery-overlay"><h4>Balayage Colour</h4><p>Hair Styling</p></div>
+
+    <!-- Party Glam -->
+    <div class="photo-item reveal" style="transition-delay:.12s">
+      <div class="photo-art photo-party">
+        <div class="pa-bg-glow"></div>
+        <div class="pa-face pa-face-party">
+          <div class="pa-skin pa-skin-party"></div>
+          <div class="pa-eye pa-eye-l pa-eye-party"></div>
+          <div class="pa-eye pa-eye-r pa-eye-party"></div>
+          <div class="pa-lash pa-lash-l"></div>
+          <div class="pa-lash pa-lash-r"></div>
+          <div class="pa-lips pa-lips-party"></div>
+          <div class="pa-highlight"></div>
+        </div>
+        <div class="pa-sparkles"></div>
+      </div>
+      <div class="photo-label"><span>✦ Party Glam</span></div>
     </div>
-    <div class="gallery-item reveal" style="transition-delay:.24s">
-      <div class="gallery-bg">✿</div>
-      <div class="gallery-overlay"><h4>Nail Art Design</h4><p>Manicure & Nails</p></div>
+
+    <!-- Hair Styling wide -->
+    <div class="photo-item photo-wide reveal" style="transition-delay:.16s">
+      <div class="photo-art photo-hair">
+        <div class="pa-hair-bg"></div>
+        <div class="pa-hair-strand s1"></div>
+        <div class="pa-hair-strand s2"></div>
+        <div class="pa-hair-strand s3"></div>
+        <div class="pa-hair-strand s4"></div>
+        <div class="pa-hair-strand s5"></div>
+        <div class="pa-hair-strand s6"></div>
+        <div class="pa-scissors"></div>
+        <div class="pa-hair-label">Balayage &amp; Colour</div>
+      </div>
+      <div class="photo-label"><span>✦ Hair Styling &amp; Colour</span></div>
     </div>
-    <div class="gallery-item reveal" style="transition-delay:.32s">
-      <div class="gallery-bg">⟡</div>
-      <div class="gallery-overlay"><h4>Festival Glam</h4><p>Party Makeup</p></div>
+
+    <!-- Skin Treatment -->
+    <div class="photo-item reveal" style="transition-delay:.2s">
+      <div class="photo-art photo-skin">
+        <div class="pa-skin-bg"></div>
+        <div class="pa-face pa-face-skin">
+          <div class="pa-skin pa-skin-glow"></div>
+          <div class="pa-eye pa-eye-l pa-eye-closed"></div>
+          <div class="pa-eye pa-eye-r pa-eye-closed"></div>
+          <div class="pa-lips pa-lips-skin"></div>
+          <div class="pa-glow-dots"></div>
+        </div>
+        <div class="pa-cream-drops"></div>
+      </div>
+      <div class="photo-label"><span>✦ Skin Treatment</span></div>
     </div>
-    <div class="gallery-item reveal" style="transition-delay:.4s">
-      <div class="gallery-bg">✧</div>
-      <div class="gallery-overlay"><h4>Bridal Mehendi</h4><p>Mehendi Design</p></div>
+
+    <!-- Mehendi -->
+    <div class="photo-item photo-tall reveal" style="transition-delay:.24s">
+      <div class="photo-art photo-mehendi">
+        <svg viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0;">
+          <rect width="200" height="400" fill="#1a1005"/>
+          <!-- Palm -->
+          <ellipse cx="100" cy="260" rx="60" ry="80" fill="#c4956a" opacity="0.9"/>
+          <!-- Fingers -->
+          <rect x="55" y="140" width="18" height="80" rx="9" fill="#c4956a"/>
+          <rect x="78" y="120" width="18" height="90" rx="9" fill="#c4956a"/>
+          <rect x="101" y="118" width="18" height="92" rx="9" fill="#c4956a"/>
+          <rect x="124" y="128" width="18" height="82" rx="9" fill="#c4956a"/>
+          <!-- Thumb -->
+          <ellipse cx="48" cy="220" rx="14" ry="36" fill="#c4956a" transform="rotate(-20 48 220)"/>
+          <!-- Mehendi patterns -->
+          <circle cx="100" cy="255" r="22" fill="none" stroke="#8B4513" stroke-width="2.5" opacity="0.9"/>
+          <circle cx="100" cy="255" r="14" fill="none" stroke="#8B4513" stroke-width="1.5" opacity="0.8"/>
+          <circle cx="100" cy="255" r="6" fill="#8B4513" opacity="0.9"/>
+          <!-- Petals around center -->
+          <ellipse cx="100" cy="230" rx="5" ry="9" fill="#8B4513" opacity="0.8"/>
+          <ellipse cx="100" cy="280" rx="5" ry="9" fill="#8B4513" opacity="0.8"/>
+          <ellipse cx="76" cy="255" rx="9" ry="5" fill="#8B4513" opacity="0.8"/>
+          <ellipse cx="124" cy="255" rx="9" ry="5" fill="#8B4513" opacity="0.8"/>
+          <!-- Diagonal petals -->
+          <ellipse cx="84" cy="239" rx="5" ry="9" fill="#8B4513" opacity="0.7" transform="rotate(-45 84 239)"/>
+          <ellipse cx="116" cy="239" rx="5" ry="9" fill="#8B4513" opacity="0.7" transform="rotate(45 116 239)"/>
+          <ellipse cx="84" cy="271" rx="5" ry="9" fill="#8B4513" opacity="0.7" transform="rotate(45 84 271)"/>
+          <ellipse cx="116" cy="271" rx="5" ry="9" fill="#8B4513" opacity="0.7" transform="rotate(-45 116 271)"/>
+          <!-- Finger patterns -->
+          <circle cx="64" cy="170" r="5" fill="none" stroke="#8B4513" stroke-width="1.5" opacity="0.8"/>
+          <circle cx="87" cy="150" r="5" fill="none" stroke="#8B4513" stroke-width="1.5" opacity="0.8"/>
+          <circle cx="110" cy="148" r="5" fill="none" stroke="#8B4513" stroke-width="1.5" opacity="0.8"/>
+          <circle cx="133" cy="158" r="5" fill="none" stroke="#8B4513" stroke-width="1.5" opacity="0.8"/>
+          <!-- Wrist band -->
+          <path d="M50 318 Q100 308 150 318" fill="none" stroke="#8B4513" stroke-width="2" opacity="0.8"/>
+          <path d="M48 325 Q100 315 152 325" fill="none" stroke="#8B4513" stroke-width="1.5" opacity="0.7"/>
+          <!-- Dots along wrist -->
+          <circle cx="60" cy="321" r="2.5" fill="#8B4513" opacity="0.9"/>
+          <circle cx="75" cy="316" r="2.5" fill="#8B4513" opacity="0.9"/>
+          <circle cx="100" cy="313" r="2.5" fill="#8B4513" opacity="0.9"/>
+          <circle cx="125" cy="316" r="2.5" fill="#8B4513" opacity="0.9"/>
+          <circle cx="140" cy="321" r="2.5" fill="#8B4513" opacity="0.9"/>
+          <!-- Leaf vine on palm -->
+          <path d="M70 290 Q85 275 100 290 Q115 275 130 290" fill="none" stroke="#6B3410" stroke-width="1.5" opacity="0.7"/>
+          <ellipse cx="78" cy="283" rx="6" ry="3" fill="#6B3410" opacity="0.6" transform="rotate(-30 78 283)"/>
+          <ellipse cx="100" cy="289" rx="6" ry="3" fill="#6B3410" opacity="0.6"/>
+          <ellipse cx="122" cy="283" rx="6" ry="3" fill="#6B3410" opacity="0.6" transform="rotate(30 122 283)"/>
+          <!-- Gold shimmer dots -->
+          <circle cx="72" cy="230" r="1.5" fill="#C9A96E" opacity="0.6"/>
+          <circle cx="128" cy="230" r="1.5" fill="#C9A96E" opacity="0.6"/>
+          <circle cx="72" cy="280" r="1.5" fill="#C9A96E" opacity="0.6"/>
+          <circle cx="128" cy="280" r="1.5" fill="#C9A96E" opacity="0.6"/>
+          <!-- Top decoration -->
+          <text x="100" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#C9A96E" opacity="0.6" letter-spacing="4">MEHENDI</text>
+          <line x1="40" y1="88" x2="160" y2="88" stroke="#C9A96E" stroke-width="0.5" opacity="0.3"/>
+        </svg>
+      </div>
+      <div class="photo-label"><span>✦ Bridal Mehendi</span></div>
     </div>
+
+    <!-- Eyebrow Threading -->
+    <div class="photo-item reveal" style="transition-delay:.28s">
+      <div class="photo-art photo-threading">
+        <div class="pa-threading-bg"></div>
+        <div class="pa-face pa-face-thread">
+          <div class="pa-skin pa-skin-thread"></div>
+          <div class="pa-brow-arch pa-brow-arch-l"></div>
+          <div class="pa-brow-arch pa-brow-arch-r"></div>
+          <div class="pa-eye pa-eye-l pa-eye-thread"></div>
+          <div class="pa-eye pa-eye-r pa-eye-thread"></div>
+        </div>
+        <div class="pa-thread-line"></div>
+      </div>
+      <div class="photo-label"><span>✦ Brow Threading</span></div>
+    </div>
+
+    <!-- Pre-Bridal Package -->
+    <div class="photo-item reveal" style="transition-delay:.32s">
+      <div class="photo-art photo-prebridal">
+        <div class="pa-prebridal-bg"></div>
+        <div class="pa-products">
+          <div class="pa-bottle b1"></div>
+          <div class="pa-bottle b2"></div>
+          <div class="pa-bottle b3"></div>
+          <div class="pa-rose"></div>
+        </div>
+        <div class="pa-prebridal-text">Pre-Bridal<br>Package</div>
+      </div>
+      <div class="photo-label"><span>✦ Pre-Bridal Package</span></div>
+    </div>
+
   </div>
 </section>
+
+<!-- DECORATIVE BANNER -->
+<div style="background:var(--cream2); padding:48px 60px; text-align:center; border-top:1px solid rgba(201,169,110,0.12); border-bottom:1px solid rgba(201,169,110,0.12); overflow:hidden; position:relative;">
+  <svg viewBox="0 0 1200 100" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.4;" preserveAspectRatio="none">
+    <defs>
+      <pattern id="floral" x="0" y="0" width="120" height="100" patternUnits="userSpaceOnUse">
+        <circle cx="60" cy="50" r="2" fill="#C9A96E" opacity="0.4"/>
+        <circle cx="60" cy="50" r="8" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.3"/>
+        <line x1="0" y1="50" x2="40" y2="50" stroke="#C9A96E" stroke-width="0.4" opacity="0.25"/>
+        <line x1="80" y1="50" x2="120" y2="50" stroke="#C9A96E" stroke-width="0.4" opacity="0.25"/>
+        <ellipse cx="30" cy="50" rx="4" ry="2" fill="#C9A96E" opacity="0.15"/>
+        <ellipse cx="90" cy="50" rx="4" ry="2" fill="#C9A96E" opacity="0.15"/>
+      </pattern>
+    </defs>
+    <rect width="1200" height="100" fill="url(#floral)"/>
+  </svg>
+  <div style="position:relative;z-index:1;">
+    <div style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.6rem,4vw,2.8rem); font-weight:300; color:var(--dark); line-height:1.2;">
+      Trusted by <em style="font-style:italic;color:var(--gold-dark)">500+ Happy Clients</em> across Greater Noida
+    </div>
+    <div style="display:flex;justify-content:center;gap:8px;margin-top:12px;">
+      <span style="color:var(--gold);font-size:1.3rem;">★★★★★</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--text-muted);margin-top:2px;">4.9 · Verified Google Reviews</span>
+    </div>
+  </div>
+</div>
 
 <!-- REVIEWS -->
 <section id="reviews" class="reviews">
@@ -1553,6 +2133,20 @@ footer {
   <div style="text-align:center">
     <div class="section-tag reveal" style="justify-content:center"><span>How It Works</span></div>
     <h2 class="section-heading section-heading-light reveal">Your Journey <em>With Us</em></h2>
+    <!-- Decorative journey line SVG -->
+    <div class="reveal" style="margin-top:32px;margin-bottom:-32px;opacity:0.5;">
+      <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;display:block;margin:0 auto;">
+        <line x1="0" y1="20" x2="600" y2="20" stroke="rgba(201,169,110,0.2)" stroke-width="1"/>
+        <circle cx="75" cy="20" r="5" fill="rgba(201,169,110,0.5)" stroke="rgba(201,169,110,0.8)" stroke-width="1"/>
+        <circle cx="225" cy="20" r="5" fill="rgba(201,169,110,0.5)" stroke="rgba(201,169,110,0.8)" stroke-width="1"/>
+        <circle cx="375" cy="20" r="5" fill="rgba(201,169,110,0.5)" stroke="rgba(201,169,110,0.8)" stroke-width="1"/>
+        <circle cx="525" cy="20" r="5" fill="rgba(201,169,110,0.5)" stroke="rgba(201,169,110,0.8)" stroke-width="1"/>
+        <circle cx="75" cy="20" r="10" fill="none" stroke="rgba(201,169,110,0.25)" stroke-width="1"/>
+        <circle cx="225" cy="20" r="10" fill="none" stroke="rgba(201,169,110,0.25)" stroke-width="1"/>
+        <circle cx="375" cy="20" r="10" fill="none" stroke="rgba(201,169,110,0.25)" stroke-width="1"/>
+        <circle cx="525" cy="20" r="10" fill="none" stroke="rgba(201,169,110,0.25)" stroke-width="1"/>
+      </svg>
+    </div>
   </div>
   <div class="process-steps">
     <div class="process-step reveal">
@@ -1701,6 +2295,25 @@ footer {
     <h2 class="section-heading reveal">Common <em>Questions</em></h2>
     <p class="section-sub reveal" style="margin-top:20px">Have more questions? Call or WhatsApp us anytime.</p>
     <a href="https://wa.me/917982519321" target="_blank" class="btn-outline" style="display:inline-flex; margin-top:32px; border-color:var(--border); color:var(--gold-dark)">Ask on WhatsApp</a>
+    <!-- Decorative lotus -->
+    <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" style="width:180px;margin-top:40px;opacity:0.18;display:block;">
+      <!-- Outer petals -->
+      <ellipse cx="100" cy="110" rx="18" ry="50" fill="var(--gold)" opacity="0.8"/>
+      <ellipse cx="100" cy="110" rx="18" ry="50" fill="var(--gold)" opacity="0.8" transform="rotate(40 100 120)"/>
+      <ellipse cx="100" cy="110" rx="18" ry="50" fill="var(--gold)" opacity="0.8" transform="rotate(80 100 120)"/>
+      <ellipse cx="100" cy="110" rx="18" ry="50" fill="var(--gold)" opacity="0.8" transform="rotate(-40 100 120)"/>
+      <ellipse cx="100" cy="110" rx="18" ry="50" fill="var(--gold)" opacity="0.8" transform="rotate(-80 100 120)"/>
+      <!-- Inner petals -->
+      <ellipse cx="100" cy="105" rx="12" ry="35" fill="var(--gold-light)" opacity="0.9"/>
+      <ellipse cx="100" cy="105" rx="12" ry="35" fill="var(--gold-light)" opacity="0.9" transform="rotate(60 100 115)"/>
+      <ellipse cx="100" cy="105" rx="12" ry="35" fill="var(--gold-light)" opacity="0.9" transform="rotate(-60 100 115)"/>
+      <!-- Center -->
+      <circle cx="100" cy="112" r="16" fill="var(--gold)" opacity="0.9"/>
+      <circle cx="100" cy="112" r="8" fill="var(--gold-light)" opacity="0.8"/>
+      <!-- Water lines -->
+      <path d="M30 155 Q100 145 170 155" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.5"/>
+      <path d="M20 163 Q100 153 180 163" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.3"/>
+    </svg>
   </div>
   <div class="faq-items reveal">
     <div class="faq-item">
